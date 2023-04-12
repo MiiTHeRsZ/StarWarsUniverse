@@ -27,46 +27,6 @@ const logo = {
 
 const buto = { uri: 'https://cdn3.emoji.gg/emojis/7182_yoda.png' };
 
-/* const ValidateLogin = async (email, senha, status, activity) => {
-    if (email.trim().length === 0) {
-        alert(MENSAGEM_EMAIL);
-        return;
-    }
-
-    if (senha.trim().length === 0) {
-        alert(MENSAGEM_SENHA);
-        return;
-    }
-
-    activity(true);
-
-    let usuario = {
-        email: email,
-        password: senha,
-    };
-
-    await fetch('https://reqres.in/api/login', {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(usuario),
-    })
-        .then((response) => {
-            if (response.status === 200) {
-                response.text().then(function (result) {
-                    status('Com sucesso autenticado o você foi');
-                    console.log(result);
-                });
-            } else {
-                status(`Inválido o usuário ou a senha está`);
-            }
-            activity(false);
-        })
-        .catch(() => status('Executar login não foi possível'));
-}; */
-
 export default function Login() {
     const [user, setUser] = useState(EMAIL);
     const [password, setPassword] = useState(SENHA);
