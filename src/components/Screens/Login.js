@@ -11,31 +11,31 @@ import {
     SafeAreaView,
 } from 'react-native';
 
-import ValidateLogin from '../../validateLogin';
+import ValidateLogin from '../../../validateLogin';
+
+import spaceBackground from '../../assets/space-background.jpg';
+import logo from '../../assets/Star_Wars_Logo.png';
 
 const MENSAGEM_EMAIL = 'Digite o seu e-mail.';
 const MENSAGEM_SENHA = 'Digite a sua senha.';
 const EMAIL = 'eve.holt@reqres.in';
 const SENHA = 'cityslicka';
 
-const image = {
-    uri: 'https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701215536.jpg',
-};
-const logo = {
-    uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Star_Wars_Logo..png/640px-Star_Wars_Logo..png',
-};
-
 const buto = { uri: 'https://cdn3.emoji.gg/emojis/7182_yoda.png' };
 
-export default function Login() {
+export default function Login({ navigation }) {
     const [user, setUser] = useState(EMAIL);
     const [password, setPassword] = useState(SENHA);
     const [status, setStatus] = useState('');
     const [activity, setActivity] = useState(false);
 
+    function openHome() {
+        navigation.navigate('Home');
+    }
+
     return (
         <View style={Estilos.container}>
-            <ImageBackground source={image} resizeMode="cover" style={Estilos.image}>
+            <ImageBackground source={spaceBackground} style={Estilos.spaceBackground}>
                 <SafeAreaView style={Estilos.innerBody}>
                     <Image source={logo} style={Estilos.logo} />
                     <Text style={Estilos.paragraph}>Fazer Login você deve</Text>
@@ -63,8 +63,11 @@ export default function Login() {
                         onChangeText={(value) => setUser(value)}
                     />
                     <TouchableOpacity
-                        onPress={() => ValidateLogin(user, password, setStatus, setActivity)} style={Estilos.buto}>
+                        onPress={openHome}
+                        /*onPress={() => ValidateLogin(user, password, setStatus, setActivity)}*/
+                        style={Estilos.buto}>
                         <Image source={buto} style={Estilos.yoda} />
+
                     </TouchableOpacity>
                     <View style={{ marginTop: 10 }}>
                         <ActivityIndicator size="large" animating={activity} />
@@ -78,17 +81,17 @@ export default function Login() {
 
 const Estilos = StyleSheet.create({
     container: {
-        display: 'flex',
         flex: 1,
         justifyContent: 'space-between',
         backgroundColor: '#202020',
     },
-    image: {
+    spaceBackground: {
         flex: 1,
         justifyContent: 'center',
     },
     logo: {
-        height: '25%',
+        height: '35%',
+        width: '100%',
         resizeMode: 'contain',
     },
     paragraph: {

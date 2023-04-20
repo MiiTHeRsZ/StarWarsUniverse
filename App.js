@@ -1,7 +1,9 @@
 import React from 'react';
 
-import Login from './src/components/Login';
+import { Routes } from './src/components/Routes';
 
 export default function App() {
-  return <Login />;
+  return (
+    <Routes />
+  );
 };
