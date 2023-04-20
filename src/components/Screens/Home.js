@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, ImageBackground, SafeAreaView, StyleSheet, View } from "react-native";
+import { Image, ImageBackground, SafeAreaView, StyleSheet, View, TouchableOpacity } from "react-native";
 
 import returnIcon from '../../assets/Millennium-Falcon-icon.png';
 import spaceBackground from '../../assets/space-background.jpg';
@@ -11,7 +11,9 @@ export default function Home() {
             <ImageBackground source={spaceBackground} style={Estilos.spaceBackground}>
                 <SafeAreaView style={Estilos.innerBody}>
                     <View style={Estilos.header}>
+                        <TouchableOpacity style={Estilos.touchable}>
                         <Image source={returnIcon} style={Estilos.returnIcon} />
+                        </TouchableOpacity>
                         <Image source={logo} style={Estilos.logo} />
                     </View>
                 </SafeAreaView>
@@ -26,6 +28,9 @@ const Estilos = StyleSheet.create({
         justifyContent: 'space-between',
         backgroundColor: '#202020',
     },
+    touchable:{
+        width:'14%',
+    },
     spaceBackground: {
         flex: 1,
         height: '100%',
@@ -36,22 +41,21 @@ const Estilos = StyleSheet.create({
     },
     header: {
         flexDirection: 'row',
-        height: 75,
-        backgroundColor: 'blue',
+        height: 83,
+        width:'100%',
         marginTop: 20,
-        alignItems: 'center'
+        alignItems: 'center',
     },
     returnIcon: {
-        height: 50,
-        width: '13%',
+        height: '100%',
+        width: '100%',
         resizeMode: 'contain',
-        backgroundColor: 'green',
-        //left: -70
+        marginLeft:'0%',
+        marginRight:'0%',
     },
     logo: {
         height: '100%',
         width: '60%',
-        resizeMode: 'contain',
-        backgroundColor: 'red'
+        marginLeft:'7%',
     }
 });
