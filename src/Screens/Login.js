@@ -11,10 +11,10 @@ import {
     SafeAreaView,
 } from 'react-native';
 
-import ValidateLogin from '../../../validateLogin';
+//import ValidateLogin from '../../validateLogin';
 
-import spaceBackground from '../../assets/space-background.jpg';
-import logo from '../../assets/Star_Wars_Logo.png';
+import spaceBackground from '../assets/space-background.jpg';
+import logo from '../assets/Star_Wars_Logo.png';
 
 const MENSAGEM_EMAIL = 'Digite o seu e-mail.';
 const MENSAGEM_SENHA = 'Digite a sua senha.';
