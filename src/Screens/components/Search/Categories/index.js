@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-const Categories = () => {
+const Categories = (props) => {
+    const { fieldCategory } = props;
+
     const [dropdownCategory, setDropdownCategory] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [categories, setCategories] = useState([]);
@@ -55,7 +57,10 @@ const Categories = () => {
                 renderItem={({ item }) => (
                     <TouchableOpacity
                         style={styles.dropdownCategory}
-                        onPress={() => handleCategorySelect(item)}
+                        onPress={() => {
+                            handleCategorySelect(item);
+                            fieldCategory(item.key);
+                        }}
                     >
                         <Text style={styles.dropdownCategoryText}>{item.name}</Text>
                     </TouchableOpacity>
@@ -91,6 +96,7 @@ const styles = StyleSheet.create({
         borderRadius: 25,
     },
     dropdownHeaderText: {
+        textAlign: 'center',
         fontSize: 17,
         fontWeight: 'bold',
         color: '#FFF',
@@ -105,6 +111,7 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     dropdownCategoryText: {
+        textAlign: 'center',
         fontSize: 19,
         color: '#EFEFEF',
     }

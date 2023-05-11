@@ -1,18 +1,32 @@
-import React from "react";
-import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import { Image, StyleSheet, TouchableOpacity, View, } from "react-native";
 
 import Categories from "./Categories";
 import TextField from "./TextField";
 
-import searchIcon from '../../../assets/imgs/Search-Button-icon.png'
+import searchIcon from '../../../assets/imgs/Search-Button-icon.png';
 
-export default function Search() {
+export default function Search(props) {
+    const [content, setContent] = useState([]);
+    const [category, setCategory] = useState('');
+    const [search, setSearch] = useState('');
+
+    const urlAPI = `https://swapi.dev/api/${category}/?search=${search}`;
+
+    const fetchAPI = async () => {
+        fetch(urlAPI)
+            .then(response => response.json())
+            .then(data => {
+                setContent(data);
+            });
+    };
+
     return (
         <View style={styles.container}>
-            <Categories />
-            <TextField style={{ flexGrow: 1 }} />
+            <Categories fieldCategory={(category) => setCategory(category)} />
+            <TextField fieldContent={(search) => setSearch(search)} />
             <TouchableOpacity
-                onPress={() => { }}
+                onPress={fetchAPI}
                 style={styles.touchable}
             >
                 <Image source={searchIcon} style={styles.icon} />
@@ -31,7 +45,5 @@ const styles = StyleSheet.create({
         height: 44,
         width: 30,
         resizeMode: 'contain',
-        marginLeft: '0%',
-        marginRight: '0%',
     },
 });

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 
-const TextField = () => {
-    const [content, setContent] = useState('');
-
+const TextField = (props) => {
+    const { fieldContent } = props;
+    
     return (
         <View>
             <TextInput
@@ -11,7 +11,7 @@ const TextField = () => {
                 clearButtonMode="while-editing"
                 placeholder="Type..."
                 placeholderTextColor="#FFF"
-                onChangeText={(value) => setContent(value)}
+                onChangeText={(value) => fieldContent(value)}
                 style={styles.field}
             />
         </View>
