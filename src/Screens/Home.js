@@ -1,38 +1,45 @@
 import React from "react";
 import { Image, ImageBackground, SafeAreaView, StyleSheet, View, TouchableOpacity } from "react-native";
 
-import returnIcon from '../assets/Millennium-Falcon-icon.png';
 import spaceBackground from '../assets/space-background.jpg';
 import logo from '../assets/Star_Wars_Logo.png';
+import returnIcon from '../assets/imgs/Return-icon.png';
+import homeIcon from '../assets/Home-icon.png';
 
-import { Categories } from "../services/API";
+import Search from './components/Search';
 
 export default function Home({ navigation }) {
-    function goBack() {
-        navigation.navigate('Login');
+    function goHome() {
+        navigation.navigate('Home');
     }
 
     return (
-        <View style={Estilos.container}>
-            <ImageBackground source={spaceBackground} style={Estilos.spaceBackground}>
-                <SafeAreaView style={Estilos.innerBody}>
-                    <View style={Estilos.header}>
+        <View style={styles.container}>
+            <ImageBackground source={spaceBackground} style={styles.spaceBackground}>
+                <SafeAreaView style={styles.innerBody}>
+                    <View style={styles.header}>
                         <TouchableOpacity
-                            onPress={goBack}
-                            style={Estilos.touchable}
+                            onPress={() => navigation.goBack()}
+                            style={styles.touchable}
                         >
-                            <Image source={returnIcon} style={Estilos.returnIcon} />
+                            <Image source={returnIcon} style={styles.icon} />
                         </TouchableOpacity>
-                        <Image source={logo} style={Estilos.logo} />
+                        <Image source={logo} style={styles.logo} />
+                        <TouchableOpacity
+                            onPress={goHome}
+                            style={styles.touchable}
+                        >
+                            <Image source={homeIcon} style={styles.icon} />
+                        </TouchableOpacity>
                     </View>
-                    <Categories />
+                    <Search />
                 </SafeAreaView>
             </ImageBackground>
         </View>
     );
 }
 
-const Estilos = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'space-between',
@@ -51,12 +58,12 @@ const Estilos = StyleSheet.create({
     },
     header: {
         flexDirection: 'row',
-        height: 83,
+        height: 85,
         width: '100%',
         marginTop: 20,
         alignItems: 'center',
     },
-    returnIcon: {
+    icon: {
         height: '100%',
         width: '100%',
         resizeMode: 'contain',
@@ -66,6 +73,7 @@ const Estilos = StyleSheet.create({
     logo: {
         height: '100%',
         width: '60%',
-        marginLeft: '7%',
+        marginHorizontal: 20,
+        flexGrow: 1
     }
 });
