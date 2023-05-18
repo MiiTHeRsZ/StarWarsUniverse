@@ -7,7 +7,8 @@ import TextField from "./TextField";
 import searchIcon from '../../../assets/imgs/Search-Button-icon.png';
 
 export default function Search(props) {
-    const [content, setContent] = useState([]);
+    const { contentAPI } = props;
+
     const [category, setCategory] = useState('');
     const [search, setSearch] = useState('');
 
@@ -17,7 +18,7 @@ export default function Search(props) {
         fetch(urlAPI)
             .then(response => response.json())
             .then(data => {
-                setContent(data);
+                contentAPI(data);
             });
     };
 
