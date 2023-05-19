@@ -15,7 +15,7 @@ export default function Home({ navigation }) {
         if (content == null) {
             return <Image source={babyYodaIcon} style={styles.babyYoda} />;
         } else {
-            return <Content content={content} style={styles.content} />
+            return <Content content={content} navigation={navigation} style={styles.content} />
         }
 
     }

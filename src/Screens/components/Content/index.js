@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Dimensions, FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-import ContentFilms from "./ContentFilms";
-
 export default function Content(props) {
-    const { content } = props;
+    const { content, navigation } = props;
     const [category, setCategory] = useState('');
+
+    function goPickedPeople(pickedPeople) {
+        navigation.navigate('PickedPeople', { pickedPeople } );
+    }
 
     useEffect(() => {
         if (content != null) {
@@ -17,15 +19,18 @@ export default function Content(props) {
         setCategory('characters');
     }
 
+
     const renderItem = ({ item }) => {
+        let text = category == 'films' ? item.title : item.name;
+
         return (
-            <TouchableOpacity onPress={() => { }}>
+            <TouchableOpacity onPress={() => {goPickedPeople(item.url)}}>
                 <View style={styles.item}>
                     <Image
                         source={{ uri: `https://starwars-visualguide.com/assets/img/${category}/${item.url.match(/\d+/)}.jpg` }}
                         style={styles.itemImage}
                     />
-                    <Text style={styles.itemName}>{item.name}</Text>
+                    <Text style={styles.itemName}>{text}</Text>
                 </View>
             </TouchableOpacity>
         );
@@ -38,26 +43,39 @@ export default function Content(props) {
                 renderItem={renderItem}
                 keyExtractor={item => item.url}
                 style={styles.list}
+                showsVerticalScrollIndicator={false}
             />
         </View>
     );
 }
 
 const styles = StyleSheet.create({
+    container: {
+        marginTop: 20,
+        borderRadius: 30,
+        borderWidth: 5,
+        borderColor: '#4C4C4C'
+    },
     list: {
-        padding: 20,
+        backgroundColor: 'rgba(85, 85, 85, .6)',
+        height: Dimensions.get('window').height - 180,
+        borderRadius: 25,
+
     },
     item: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginVertical: 10,
+        paddingHorizontal: 20,
+        paddingVertical: 10
     },
     itemImage: {
-        width: 50,
-        height: 50,
+        borderRadius: 50,
+        width: 75,
+        height: 75,
         marginRight: 10,
     },
     itemName: {
-        color: '#fff',
+        color: '#FFF',
+        fontWeight: 'bold'
     }
 });

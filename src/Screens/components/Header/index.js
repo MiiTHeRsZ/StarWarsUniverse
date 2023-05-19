@@ -7,6 +7,7 @@ import homeIcon from '../../../assets/imgs/Home-icon.png';
 
 export default function Header(props) {
     const { navigation } = props;
+    
     function goHome() {
         navigation.navigate('Home');
     }
