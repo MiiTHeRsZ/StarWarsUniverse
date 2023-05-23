@@ -6,7 +6,7 @@ export default function Content(props) {
     const [category, setCategory] = useState('');
 
     function goPickedPeople(pickedPeople) {
-        navigation.navigate('PickedPeople', { pickedPeople } );
+        navigation.navigate('PickedPeople', pickedPeople );
     }
 
     useEffect(() => {
@@ -24,7 +24,7 @@ export default function Content(props) {
         let text = category == 'films' ? item.title : item.name;
 
         return (
-            <TouchableOpacity onPress={() => {goPickedPeople(item.url)}}>
+            <TouchableOpacity onPress={() => { goPickedPeople(item) }}>
                 <View style={styles.item}>
                     <Image
                         source={{ uri: `https://starwars-visualguide.com/assets/img/${category}/${item.url.match(/\d+/)}.jpg` }}
@@ -42,8 +42,8 @@ export default function Content(props) {
                 data={content.results}
                 renderItem={renderItem}
                 keyExtractor={item => item.url}
-                style={styles.list}
                 showsVerticalScrollIndicator={false}
+                style={styles.list}
             />
         </View>
     );
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         borderRadius: 30,
         borderWidth: 5,
-        borderColor: '#4C4C4C'
+        borderColor: '#4C4C4C',
     },
     list: {
         backgroundColor: 'rgba(85, 85, 85, .6)',
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 20,
-        paddingVertical: 10
+        paddingVertical: 10,
     },
     itemImage: {
         borderRadius: 50,
@@ -77,5 +77,5 @@ const styles = StyleSheet.create({
     itemName: {
         color: '#FFF',
         fontWeight: 'bold'
-    }
+    },
 });
