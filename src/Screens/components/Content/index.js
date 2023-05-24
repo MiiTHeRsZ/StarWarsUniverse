@@ -5,8 +5,23 @@ export default function Content(props) {
     const { content, navigation } = props;
     const [category, setCategory] = useState('');
 
+    function goPickedFilm(pickedFilm) {
+        navigation.navigate('PickedFilm', pickedFilm);
+    }
     function goPickedPeople(pickedPeople) {
-        navigation.navigate('PickedPeople', pickedPeople );
+        navigation.navigate('PickedPeople', pickedPeople);
+    }
+    function goPickedPlanet(pickedPlanet) {
+        navigation.navigate('PickedPlanet', pickedPlanet);
+    }
+    function goPickedSpecie(pickedSpecie) {
+        navigation.navigate('PickedSpecie', pickedSpecie);
+    }
+    function goPickedStarship(pickedStarship) {
+        navigation.navigate('PickedStarship', pickedStarship);
+    }
+    function goPickedVehicle(pickedVehicle) {
+        navigation.navigate('PickedVehicle', pickedVehicle);
     }
 
     useEffect(() => {
@@ -19,12 +34,37 @@ export default function Content(props) {
         setCategory('characters');
     }
 
+    const goInfo = (item) => {
+        switch (category) {
+            case "films":
+                goPickedFilm(item)
+                break;
+            case "characters":
+                goPickedPeople(item)
+                break;
+            case "planets":
+                goPickedPlanet(item)
+                break;
+            case "species":
+                goPickedSpecie(item)
+                break;
+            case "starships":
+                goPickedStarship(item)
+                break;
+            case "vehicles":
+                goPickedVehicle(item)
+                break;
+
+            default:
+                break;
+        }
+    }
 
     const renderItem = ({ item }) => {
         let text = category == 'films' ? item.title : item.name;
 
         return (
-            <TouchableOpacity onPress={() => { goPickedPeople(item) }}>
+            <TouchableOpacity onPress={() => { goInfo(item) }}>
                 <View style={styles.item}>
                     <Image
                         source={{ uri: `https://starwars-visualguide.com/assets/img/${category}/${item.url.match(/\d+/)}.jpg` }}
@@ -34,6 +74,7 @@ export default function Content(props) {
                 </View>
             </TouchableOpacity>
         );
+
     }
 
     return (
