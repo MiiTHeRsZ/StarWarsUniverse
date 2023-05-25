@@ -94,13 +94,18 @@ const styles = StyleSheet.create({
     container: {
         marginTop: 20,
         borderRadius: 30,
-        borderWidth: 5,
-        borderColor: '#4C4C4C',
+        borderWidth: 2,
+        borderColor: 'rgba(255,255,255,.5)',
+        position: 'absolute',
+        top: 180,
+        zIndex: -1,
+        width: '100%',
+        alignSelf: 'center',
     },
     list: {
-        backgroundColor: 'rgba(85, 85, 85, .6)',
+        backgroundColor: 'rgba(53, 53, 53, .9)',
         height: Dimensions.get('window').height - 180,
-        borderRadius: 25,
+        borderRadius: 30,
 
     },
     item: {
@@ -114,6 +119,8 @@ const styles = StyleSheet.create({
         width: 75,
         height: 75,
         marginRight: 10,
+        borderWidth: 2,
+        borderColor: 'rgba(221,185,0,.9)',
     },
     itemName: {
         color: '#FFF',

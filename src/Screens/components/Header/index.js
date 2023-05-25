@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
     },
     logo: {
         height: '100%',
-        width: '60%',
+        width: '65%',
         marginHorizontal: 20,
-        flexGrow: 1
+        flexGrow: 1,
     }
 });

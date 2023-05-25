@@ -22,15 +22,16 @@ export default TextField;
 
 const styles = StyleSheet.create({
     field: {
-        backgroundColor: 'rgba(92, 92, 92, .6)',
-        paddingVertical: 6,
+        backgroundColor: 'rgba(53, 53, 53, .9)',
+        paddingVertical: 7,
         paddingHorizontal: 12,
-        width: 175,
-        borderWidth: 2,
-        borderColor: '#5C5C5C',
+        width: 170,
+        borderWidth: 1,
+        borderColor: 'rgba(255,255,255,.5)',
         borderRadius: 25,
         fontSize: 17,
         fontWeight: 'bold',
         color: '#FFF',
+        marginRight:5,
     }
 });

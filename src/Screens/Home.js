@@ -46,12 +46,15 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     innerBody: {
-        padding: 25,
+        padding:25,
     },
     babyYoda: {
         alignSelf: 'center',
-        width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height - Dimensions.get('window').width,
+        width: ((Dimensions.get('window').width) -10),
+        height: ((Dimensions.get('window').height) - (Dimensions.get('window').width) -100),
+        position: 'absolute',
+        top:250,
+        zIndex:-1,
     },
     content: {
         height: 500,
