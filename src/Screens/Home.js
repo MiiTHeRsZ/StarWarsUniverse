@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     babyYoda: {
         alignSelf: 'center',
         width: ((Dimensions.get('window').width) -10),
-        height: ((Dimensions.get('window').height) - (Dimensions.get('window').width) -100),
+        height: ((Dimensions.get('window').height) - (Dimensions.get('window').width) -80),
         position: 'absolute',
         top:250,
         zIndex:-1,

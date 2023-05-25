@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         height: 85,
         width: '100%',
-        marginTop: 20,
+        marginTop: 25,
         alignItems: 'center',
     },
     icon: {
@@ -51,7 +51,8 @@ const styles = StyleSheet.create({
     },
     logo: {
         height: '100%',
-        width: '65%',
+        width: '60%',
+        aspectRatio:21/9,
         marginHorizontal: 20,
         flexGrow: 1,
     }
