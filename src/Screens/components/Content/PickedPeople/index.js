@@ -205,17 +205,25 @@ const styles = StyleSheet.create({
     },
     main: {
         flexDirection: 'row',
-        alignItems: 'center',
+        
         marginVertical: 20,
     },
     imagePoster: {
         height: 245,
         width: 170,
         borderRadius: 5,
+        borderWidth: 1,
+        borderColor: 'rgba(221,185,0,.9)',
+        
     },
     contentFilm: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent:'space-between',
         paddingHorizontal: 20,
         maxWidth: 184,
+        
+        
     },
     textTitle: {
         color: '#FFF',
@@ -223,6 +231,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         textAlign: 'center',
+        
     },
     contentTextSubtitle: {
         backgroundColor: 'rgba(92, 92, 92, .6)',
@@ -232,6 +241,7 @@ const styles = StyleSheet.create({
     },
     textSubtitle: {
         color: '#FFF',
+        lineHeight:25
     },
     related: {
         backgroundColor: 'rgba(92, 92, 92, .8)',

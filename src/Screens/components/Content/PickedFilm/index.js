@@ -1,5 +1,7 @@
 import React from "react";
-import { FlatList, Image, StyleSheet, Text, View } from "react-native";
+import { FlatList, Image, StyleSheet, Text, View, ImageBackground } from "react-native";
+import spaceBackground from '../../../../assets/imgs/space-background.jpg';
+import Header from '../../Header/index'
 
 const PickedFilm = () => {
     const episode = { 1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V', 6: 'VI', 7: 'VII', 8: 'VIII', 9: 'IX' }
@@ -65,94 +67,101 @@ const PickedFilm = () => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.main}>
-                <Image
-                    source={{ uri: `https://starwars-visualguide.com/assets/img/films/${dadosTesteFilms.url.match(/\d+/)}.jpg` }}
-                    style={styles.imagePoster}
-                />
-                <View style={styles.contentFilm}>
-                    <Text style={styles.textTitle}>Info</Text>
-                    <View style={styles.contentTextSubtitle}>
-                        <Text style={styles.textSubtitle}>Episode {episode[dadosTesteFilms.episode_id]}: {dadosTesteFilms.title}</Text>
-                        <Text style={styles.textSubtitle}>Release date: {dadosTesteFilms.release_date}</Text>
-                        <Text style={styles.textSubtitle}>Director: {dadosTesteFilms.director}</Text>
-                        <Text style={styles.textSubtitle}>Producer: {dadosTesteFilms.producer}</Text>
+            <ImageBackground source={spaceBackground} style={styles.spaceBackground}>
+                <View style={styles.body}>
+
+
+                    <View style={styles.main}>
+                        <Image
+                            source={{ uri: `https://starwars-visualguide.com/assets/img/films/${dadosTesteFilms.url.match(/\d+/)}.jpg` }}
+                            style={styles.imagePoster}
+                        />
+                        <View style={styles.contentFilm}>
+                            <Text style={styles.textTitle}>Info</Text>
+                            <View style={styles.contentTextSubtitle}>
+                                <Text style={styles.textSubtitle}>Episode {episode[dadosTesteFilms.episode_id]}: {dadosTesteFilms.title}</Text>
+                                <Text style={styles.textSubtitle}>Release date: {dadosTesteFilms.release_date}</Text>
+                                <Text style={styles.textSubtitle}>Director: {dadosTesteFilms.director}</Text>
+                                <Text style={styles.textSubtitle}>Producer: {dadosTesteFilms.producer}</Text>
+                            </View>
+                        </View>
+                    </View>
+                    <Text style={styles.textTitle}>Opening Crawl</Text>
+                    <Text style={styles.contentTextSubtitle}>{dadosTesteFilms.opening_crawl}</Text>
+                    <Text>Related Characters</Text>
+                    <View>
+                        <FlatList
+                            data={dadosTesteFilms.characters}
+                            renderItem={({ item }) => {
+                                <View>
+                                    <Image
+                                        source={{ uri: `https://starwars-visualguide.com/assets/img/characters/${item.match(/\d+/)}.jpg` }}
+                                    />
+                                    <Text>{/* Colocar o nome do personagem */}</Text>
+                                </View>
+                            }}
+                        />
+                    </View>
+                    <Text>Related Planets</Text>
+                    <View>
+                        <FlatList
+                            data={dadosTesteFilms.planets}
+                            renderItem={({ item }) => {
+                                <View>
+                                    <Image
+                                        source={{ uri: `https://starwars-visualguide.com/assets/img/planets/${item.match(/\d+/)}.jpg` }}
+                                    />
+                                    <Text>{/* Colocar o nome do planeta */}</Text>
+                                </View>
+                            }}
+                        />
+                    </View>
+                    <Text>Related Starships</Text>
+                    <View>
+                        <FlatList
+                            data={dadosTesteFilms.starships}
+                            renderItem={({ item }) => {
+                                <View>
+                                    <Image
+                                        source={{ uri: `https://starwars-visualguide.com/assets/img/starships/${item.match(/\d+/)}.jpg` }}
+                                    />
+                                    <Text>{/* Colocar o nome do espaçonave */}</Text>
+                                </View>
+                            }}
+                        />
+                    </View>
+                    <Text>Related Species</Text>
+                    <View>
+                        <FlatList
+                            data={dadosTesteFilms.species}
+                            renderItem={({ item }) => {
+                                <View>
+                                    <Image
+                                        source={{ uri: `https://starwars-visualguide.com/assets/img/species/${item.match(/\d+/)}.jpg` }}
+                                    />
+                                    <Text>{/* Colocar o nome do espécie */}</Text>
+                                </View>
+                            }}
+                        />
+                    </View>
+                    <Text>Related Vehicles</Text>
+                    <View>
+                        <FlatList
+                            data={dadosTesteFilms.vehicles}
+                            renderItem={({ item }) => {
+                                <View>
+                                    <Image
+                                        source={{ uri: `https://starwars-visualguide.com/assets/img/vehicles/${item.match(/\d+/)}.jpg` }}
+                                    />
+                                    <Text>{/* Colocar o nome do veículo */}</Text>
+                                </View>
+                            }}
+                        />
                     </View>
                 </View>
-            </View>
-            <Text style={styles.textTitle}>Opening Crawl</Text>
-            <Text style={styles.contentTextSubtitle}>{dadosTesteFilms.opening_crawl}</Text>
-            <Text>Related Characters</Text>
-            <View>
-                <FlatList
-                    data={dadosTesteFilms.characters}
-                    renderItem={({ item }) => {
-                        <View>
-                            <Image
-                                source={{ uri: `https://starwars-visualguide.com/assets/img/characters/${item.match(/\d+/)}.jpg` }}
-                            />
-                            <Text>{/* Colocar o nome do personagem */}</Text>
-                        </View>
-                    }}
-                />
-            </View>
-            <Text>Related Planets</Text>
-            <View>
-                <FlatList
-                    data={dadosTesteFilms.planets}
-                    renderItem={({ item }) => {
-                        <View>
-                            <Image
-                                source={{ uri: `https://starwars-visualguide.com/assets/img/planets/${item.match(/\d+/)}.jpg` }}
-                            />
-                            <Text>{/* Colocar o nome do planeta */}</Text>
-                        </View>
-                    }}
-                />
-            </View>
-            <Text>Related Starships</Text>
-            <View>
-                <FlatList
-                    data={dadosTesteFilms.starships}
-                    renderItem={({ item }) => {
-                        <View>
-                            <Image
-                                source={{ uri: `https://starwars-visualguide.com/assets/img/starships/${item.match(/\d+/)}.jpg` }}
-                            />
-                            <Text>{/* Colocar o nome do espaçonave */}</Text>
-                        </View>
-                    }}
-                />
-            </View>
-            <Text>Related Species</Text>
-            <View>
-                <FlatList
-                    data={dadosTesteFilms.species}
-                    renderItem={({ item }) => {
-                        <View>
-                            <Image
-                                source={{ uri: `https://starwars-visualguide.com/assets/img/species/${item.match(/\d+/)}.jpg` }}
-                            />
-                            <Text>{/* Colocar o nome do espécie */}</Text>
-                        </View>
-                    }}
-                />
-            </View>
-            <Text>Related Vehicles</Text>
-            <View>
-                <FlatList
-                    data={dadosTesteFilms.vehicles}
-                    renderItem={({ item }) => {
-                        <View>
-                            <Image
-                                source={{ uri: `https://starwars-visualguide.com/assets/img/vehicles/${item.match(/\d+/)}.jpg` }}
-                            />
-                            <Text>{/* Colocar o nome do veículo */}</Text>
-                        </View>
-                    }}
-                />
-            </View>
+            </ImageBackground>
         </View>
+
     );
 }
 
@@ -160,33 +169,64 @@ export default PickedFilm;
 
 const styles = StyleSheet.create({
     container: {
-        padding: 20,
+        flex: 1,
+        justifyContent: 'space-between',
+        backgroundColor: '#202020',
+    },
+    spaceBackground: {
+        flex: 1,
+        height: '100%',
+        width: '100%'
+    },
+
+    body: {
+        padding: 10,
+        alignContent: 'center',
+        marginVertical: 75,
+
     },
     main: {
+        paddingHorizontal: 5,
         flexDirection: 'row',
-        alignItems: 'center'
+        height: '27%',
+        marginBottom: 45,
+        justifyContent: 'space-between',
     },
     imagePoster: {
-        height: 245,
-        width: 170,
+        minHeight: "100%",
+        width: "46%",
+        aspectRatio: 16 / 9,
         borderRadius: 5,
+        borderWidth: 2,
+        borderColor: 'rgba(255,255,255,.5)',
+        alignSelf: 'center',
     },
     contentFilm: {
-        paddingHorizontal: 20,
-        maxWidth: 184,
+
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignSelf: 'center',
+        height: '100%',
+        width: '45%',
     },
     textTitle: {
         color: '#FFF',
-        paddingVertical: 5,
+        paddingBottom: 5,
         fontSize: 20,
         fontWeight: 'bold',
         textAlign: 'center',
     },
     contentTextSubtitle: {
-        backgroundColor: 'rgba(92, 92, 92, .6)',
+
+        backgroundColor: 'rgba(53, 53, 53, .9)',
         color: '#FFF',
         borderRadius: 15,
-        padding: 10,
+        padding: 15,
+        borderWidth: 2,
+        borderColor: 'rgba(255,255,255,.5)',
+        lineHeight: 25,
+
     },
     textSubtitle: {
         color: '#FFF',
