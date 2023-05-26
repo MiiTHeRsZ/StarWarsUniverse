@@ -222,17 +222,16 @@ const styles = StyleSheet.create({
     },
     main: {
         flexDirection: 'row',
-        height: '27%',
+        height: 320,
         marginBottom: 45,
         marginTop: 20,
         justifyContent: 'space-between',
 
     },
     imagePoster: {
-        minHeight: "100%",
-        height: "100%",
-        width: "50%",
-        borderRadius: 5,
+        height: 320,
+        width: 200,
+        borderRadius: 15,
         borderWidth: 2,
         borderColor: 'rgba(221,185,0,.9)',
         alignSelf: 'center',
@@ -240,7 +239,7 @@ const styles = StyleSheet.create({
     },
     contentFilm: {
         alignSelf: 'center',
-        height: '100%',
+        height: 320,
         width: '41%',
 
     },
