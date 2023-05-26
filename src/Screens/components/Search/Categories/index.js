@@ -91,14 +91,16 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(53, 53, 53, .9)',
         color: '#fff',
         width: 120,
+        height:45,
         maxWidth: 120,
-        paddingVertical: 10,
+        paddingVertical: 5,
         paddingHorizontal: 5,
         borderColor: 'rgba(255,255,255,.5)',
         borderWidth:1,
         borderRadius:25,
         marginBottom:2,
         marginRight:5,
+        justifyContent:'center'
     },
     dropdownHeaderText: {
         textAlign: 'center',

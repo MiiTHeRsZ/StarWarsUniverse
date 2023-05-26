@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Dimensions, Image, StyleSheet, TouchableOpacity, View } from "react-native";
 
 import logo from '../../../assets/imgs/Star_Wars_Logo.png';
 import returnIcon from '../../../assets/imgs/Return-icon.png';
@@ -38,9 +38,10 @@ const styles = StyleSheet.create({
     header: {
         flexDirection: 'row',
         height: 85,
-        width: '100%',
+        width: ((Dimensions.get('window').width)-((Dimensions.get('window').width))/7),
         marginTop: 25,
-        alignItems: 'center',
+        alignSelf: 'center',
+        alignItems:'center'
     },
     icon: {
         height: '100%',
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     },
     logo: {
         height: '100%',
-        width: '60%',
+        width: '50%',
         aspectRatio:21/9,
         marginHorizontal: 20,
         flexGrow: 1,
