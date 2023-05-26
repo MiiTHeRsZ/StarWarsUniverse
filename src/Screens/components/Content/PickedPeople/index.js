@@ -97,13 +97,13 @@ export default function PickedPeople({ route, navigation }) {
                 <View style={styles.body}>
                     <SafeAreaView style={styles.innerBody}>
                         <Header navigation={navigation} />
-                        <Text style={styles.peopleName}>{contentPeople.name}</Text>
                         <View style={styles.main}>
                             <Image
                                 source={{ uri: `https://starwars-visualguide.com/assets/img/characters/${contentPeople.url.match(/\d+/)}.jpg` }}
                                 style={styles.imagePoster}
                             />
                             <View style={styles.contentFilm}>
+                                <Text style={styles.peopleName}>{contentPeople.name}</Text>
                                 <View style={styles.contentTextSubtitle}>
                                     <Text style={styles.textSubtitle}>Birth Year: {contentPeople.birth_year}</Text>
                                     <Text style={styles.textSubtitle}>Specie: {speciesName}</Text>
@@ -216,21 +216,21 @@ const styles = StyleSheet.create({
     peopleName: {
         color: '#FFF',
         paddingVertical: 5,
-        fontSize: 30,
+        fontSize: 20,
         fontWeight: 'bold',
         textAlign: 'center',
     },
     main: {
         flexDirection: 'row',
-        height: 320,
+        height: 250,
         marginBottom: 45,
         marginTop: 20,
         justifyContent: 'space-between',
 
     },
     imagePoster: {
-        height: 320,
-        width: 200,
+        height: 250,
+        width: 175,
         borderRadius: 15,
         borderWidth: 2,
         borderColor: 'rgba(221,185,0,.9)',
@@ -239,9 +239,9 @@ const styles = StyleSheet.create({
     },
     contentFilm: {
         alignSelf: 'center',
-        height: 320,
+        height: 250,
         width: '41%',
-
+        justifyContent: 'space-between'
     },
     textTitle: {
         color: '#FFF',
