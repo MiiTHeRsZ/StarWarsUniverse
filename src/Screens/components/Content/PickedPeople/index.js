@@ -101,20 +101,20 @@ export default function PickedPeople({ route, navigation }) {
                             source={{ uri: `https://starwars-visualguide.com/assets/img/characters/${contentPeople.url.match(/\d+/)}.jpg` }}
                             style={styles.imagePoster}
                         />
-                        <View style={styles.contentFilm}>
-                            <Text style={styles.textTitle}>{contentPeople.name}</Text>
-                            <View style={styles.contentTextSubtitle}>
-                                <Text style={styles.textSubtitle}>Birth Year: {contentPeople.birth_year}</Text>
-                                <Text style={styles.textSubtitle}>Specie: {speciesName}</Text>
-                                <Text style={styles.textSubtitle}>Gender: {contentPeople.gender}</Text>
-                                <Text style={styles.textSubtitle}>Height: {contentPeople.height}cm</Text>
-                                <Text style={styles.textSubtitle}>Mass: {contentPeople.mass}Kg</Text>
-                                <Text style={styles.textSubtitle}>Homeworld: {homeworldName}</Text>
+                        <View style={styles.content}>
+                            <Text style={styles.titleText}>{contentPeople.name}</Text>
+                            <View style={styles.subtitleTextContent}>
+                                <Text style={styles.subtitleText}>Birth Year: {contentPeople.birth_year}</Text>
+                                <Text style={styles.subtitleText}>Specie: {speciesName}</Text>
+                                <Text style={styles.subtitleText}>Gender: {contentPeople.gender}</Text>
+                                <Text style={styles.subtitleText}>Height: {contentPeople.height}cm</Text>
+                                <Text style={styles.subtitleText}>Mass: {contentPeople.mass}Kg</Text>
+                                <Text style={styles.subtitleText}>Homeworld: {homeworldName}</Text>
                             </View>
                         </View>
                     </View>
 
-                    <Text style={styles.textTitle}>Related Films</Text>
+                    <Text style={styles.titleText}>Related Films</Text>
                     <View style={styles.related}>
                         <FlatList
                             data={filmsData}
@@ -124,18 +124,18 @@ export default function PickedPeople({ route, navigation }) {
                                     <View style={styles.relatedListItem}>
                                         <Image
                                             source={{ uri: `https://starwars-visualguide.com/assets/img/films/${item.url.match(/\d+/)}.jpg` }}
-                                            style={styles.imageRelated}
+                                            style={styles.relatedImage}
                                         />
-                                        <Text style={styles.nameRelated}>{item.title}</Text>
+                                        <Text style={styles.relatedName}>{item.title}</Text>
                                     </View>
                                 );
                             }}
-                            ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related starships</Text>}
+                            ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related films</Text>}
                             numColumns={3}
                             style={styles.relatedList}
                         />
                     </View>
-                    <Text style={styles.textTitle}>Related Starships</Text>
+                    <Text style={styles.titleText}>Related Starships</Text>
                     <View style={styles.related}>
                         <FlatList
                             data={starshipsData}
@@ -145,9 +145,9 @@ export default function PickedPeople({ route, navigation }) {
                                     <View style={styles.relatedListItem}>
                                         <Image
                                             source={{ uri: `https://starwars-visualguide.com/assets/img/starships/${item.url.match(/\d+/)}.jpg` }}
-                                            style={styles.imageRelated}
+                                            style={styles.relatedImage}
                                         />
-                                        <Text style={styles.nameRelated}>{item.name}</Text>
+                                        <Text style={styles.relatedName}>{item.name}</Text>
                                     </View>
                                 );
                             }}
@@ -156,7 +156,7 @@ export default function PickedPeople({ route, navigation }) {
                             style={styles.relatedList}
                         />
                     </View>
-                    <Text style={styles.textTitle}>Related Vehicles</Text>
+                    <Text style={styles.titleText}>Related Vehicles</Text>
                     <View style={styles.related}>
                         <FlatList
                             data={vehiclesData}
@@ -166,13 +166,13 @@ export default function PickedPeople({ route, navigation }) {
                                     <View style={styles.relatedListItem}>
                                         <Image
                                             source={{ uri: `https://starwars-visualguide.com/assets/img/vehicles/${item.url.match(/\d+/)}.jpg` }}
-                                            style={styles.imageRelated}
+                                            style={styles.relatedImage}
                                         />
-                                        <Text style={styles.nameRelated}>{item.name}</Text>
+                                        <Text style={styles.relatedName}>{item.name}</Text>
                                     </View>
                                 );
                             }}
-                            ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related starships</Text>}
+                            ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related vehicles</Text>}
                             numColumns={3}
                             style={styles.relatedList}
                         />
@@ -205,43 +205,38 @@ const styles = StyleSheet.create({
     },
     main: {
         flexDirection: 'row',
-        
         marginVertical: 20,
     },
     imagePoster: {
         height: 245,
         width: 170,
-        borderRadius: 5,
+        borderRadius: 15,
         borderWidth: 1,
         borderColor: 'rgba(221,185,0,.9)',
-        
     },
-    contentFilm: {
+    content: {
         display: 'flex',
         flexDirection: 'column',
-        justifyContent:'space-between',
+        justifyContent: 'space-between',
         paddingHorizontal: 20,
         maxWidth: 184,
-        
-        
     },
-    textTitle: {
+    titleText: {
         color: '#FFF',
         paddingVertical: 5,
         fontSize: 20,
         fontWeight: 'bold',
         textAlign: 'center',
-        
     },
-    contentTextSubtitle: {
+    subtitleTextContent: {
         backgroundColor: 'rgba(92, 92, 92, .6)',
         color: '#FFF',
         borderRadius: 15,
         padding: 10,
     },
-    textSubtitle: {
+    subtitleText: {
         color: '#FFF',
-        lineHeight:25
+        lineHeight: 25
     },
     related: {
         backgroundColor: 'rgba(92, 92, 92, .8)',
@@ -259,13 +254,13 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         width: 80,
     },
-    imageRelated: {
+    relatedImage: {
         borderRadius: 50,
         width: 60,
         height: 60,
         marginBottom: 10,
     },
-    nameRelated: {
+    relatedName: {
         textAlign: 'center',
         color: '#FFF',
         fontWeight: 'bold',

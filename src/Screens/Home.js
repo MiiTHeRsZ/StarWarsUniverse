@@ -15,10 +15,8 @@ export default function Home({ navigation }) {
         if (content == null || content.people == "https://swapi.dev/api/people/") {
             return <Image source={babyYodaIcon} style={styles.babyYoda} />;
         } else {
-            console.log(content == [{"films": "https://swapi.dev/api/films/", "people": "https://swapi.dev/api/people/", "planets": "https://swapi.dev/api/planets/", "species": "https://swapi.dev/api/species/", "starships": "https://swapi.dev/api/starships/", "vehicles": "https://swapi.dev/api/vehicles/"}]);
             return <Content content={content} navigation={navigation} style={styles.content} />
         }
-
     }
 
     return (
@@ -46,15 +44,15 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     innerBody: {
-        padding:25,
+        padding: 25,
     },
     babyYoda: {
         alignSelf: 'center',
-        width: ((Dimensions.get('window').width) -10),
-        height: ((Dimensions.get('window').height) - (Dimensions.get('window').width) -100),
+        width: ((Dimensions.get('window').width)),
+        height: ((Dimensions.get('window').height) - (Dimensions.get('window').width) - 10),
         position: 'absolute',
-        top:250,
-        zIndex:-1,
+        top: 250,
+        zIndex: -1,
     },
     content: {
         height: 500,
