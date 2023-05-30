@@ -112,6 +112,7 @@ const styles = StyleSheet.create({
     dropdownCategory: {
         paddingVertical: 5,
         paddingHorizontal: 2,
+        zIndex:4
     },
     dropdownCategoryText: {
         textAlign: 'center',

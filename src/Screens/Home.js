@@ -24,8 +24,12 @@ export default function Home({ navigation }) {
             <ImageBackground source={spaceBackground} style={styles.spaceBackground}>
                 <SafeAreaView style={styles.innerBody}>
                     <Header navigation={navigation} />
+<View style={styles.test}>
+
                     <Search contentAPI={(content) => setContent(content)} />
                     {renderContent()}
+</View>
+
                 </SafeAreaView>
             </ImageBackground>
         </View>
@@ -48,13 +52,17 @@ const styles = StyleSheet.create({
     },
     babyYoda: {
         alignSelf: 'center',
-        width: ((Dimensions.get('window').width)),
-        height: ((Dimensions.get('window').height) - (Dimensions.get('window').width) - 10),
+        width: ((Dimensions.get('window').width) - 10),
+        height: ((Dimensions.get('window').height) / 2),
         position: 'absolute',
-        top: 250,
+        top: ((Dimensions.get('window').height)/5-10),
         zIndex: -1,
     },
     content: {
         height: 500,
+
+    },
+    test:{
+        marginTop:25,
     }
 });

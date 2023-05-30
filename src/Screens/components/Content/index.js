@@ -74,7 +74,6 @@ export default function Content(props) {
                 </View>
             </TouchableOpacity>
         );
-
     }
 
     return (
@@ -83,6 +82,7 @@ export default function Content(props) {
                 data={content.results}
                 renderItem={renderItem}
                 keyExtractor={item => item.url}
+                ItemSeparatorComponent={<View style={styles.separatorComponent} />}
                 showsVerticalScrollIndicator={false}
                 style={styles.list}
             />
@@ -96,17 +96,25 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         borderWidth: 2,
         borderColor: 'rgba(255,255,255,.5)',
-        position: 'absolute',
-        top: 180,
-        zIndex: -1,
         width: '100%',
         alignSelf: 'center',
+        zIndex:-1,
+        marginTop:80,
+        height:((Dimensions.get('window').height)-200),
     },
     list: {
         backgroundColor: 'rgba(53, 53, 53, .9)',
         height: Dimensions.get('window').height - 180,
         borderRadius: 30,
+        position:'relative'
 
+    },
+    separatorComponent: {
+        backgroundColor: 'rgba(255,255,255,.5)',
+        width: '80%',
+        height: 2,
+        alignSelf: 'center',
+        borderRadius: 5,
     },
     item: {
         flexDirection: 'row',

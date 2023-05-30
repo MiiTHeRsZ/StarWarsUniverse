@@ -152,6 +152,7 @@ const styles = StyleSheet.create({
     main: {
         flexDirection: 'row',
         marginVertical: 20,
+        alignItems: 'center',
     },
     imagePoster: {
         height: 245,
