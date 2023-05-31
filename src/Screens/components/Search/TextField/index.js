@@ -3,7 +3,7 @@ import { StyleSheet, TextInput, View } from "react-native";
 
 const TextField = (props) => {
     const { fieldContent } = props;
-    
+
     return (
         <View>
             <TextInput
@@ -26,13 +26,13 @@ const styles = StyleSheet.create({
         paddingVertical: 7,
         paddingHorizontal: 12,
         width: 155,
-        height:45,
+        height: 45,
         borderWidth: 1,
         borderColor: 'rgba(255,255,255,.5)',
         borderRadius: 25,
         fontSize: 17,
         fontWeight: 'bold',
         color: '#FFF',
-        marginRight:5,
+        marginRight: 5,
     }
 });
