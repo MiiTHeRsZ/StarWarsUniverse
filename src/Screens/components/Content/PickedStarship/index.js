@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, FlatList, Image, ImageBackground, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, FlatList, Image, ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import Header from "../../Header";
 
@@ -57,72 +57,74 @@ export default function PickedFilm({ route, navigation }) {
         <View style={styles.container}>
             <ImageBackground source={spaceBackground} style={styles.spaceBackground}>
                 <SafeAreaView style={styles.innerBody}>
-                    <Header navigation={navigation} />
-                    <View style={styles.main}>
-                        <Image
-                            source={{ uri: `https://starwars-visualguide.com/assets/img/starships/${contentStarship.url.match(/\d+/)}.jpg` }}
-                            style={styles.imagePoster}
-                        />
-                        <View style={styles.content}>
-                        <Text style={styles.titleText}>{contentStarship.name}</Text>
-                            <View style={styles.subtitleTextContent}>
-                                <Text style={styles.subtitleText}>Model: {contentStarship.model}</Text>
-                                <Text style={styles.subtitleText}>Starship Class: {contentStarship.starship_class}</Text>
-                                <Text style={styles.subtitleText}>Manufacturer: {contentStarship.manufacturer}</Text>
-                                <Text style={styles.subtitleText}>Cost: {contentStarship.cost_in_credits} credits</Text>
-                                <Text style={styles.subtitleText}>Max Atmosphering Speed: {contentStarship.max_atmosphering_speed}km/h</Text>
-                                <Text style={styles.subtitleText}>Hyperdrive Rating: {contentStarship.hyperdrive_rating}</Text>
-                                <Text style={styles.subtitleText}>MGLT: {contentStarship.MGLT}</Text>
-                                <Text style={styles.subtitleText}>Crew: {contentStarship.crew}</Text>
-                                <Text style={styles.subtitleText}>Passengers: {contentStarship.passengers}</Text>
-                                <Text style={styles.subtitleText}>Cargo Capacity: {contentStarship.cargo_capacity}kg</Text>
-                                <Text style={styles.subtitleText}>Length: {contentStarship.length}m</Text>
-                                <Text style={styles.subtitleText}>Consumables: {contentStarship.consumables}</Text>
+                    <ScrollView style={{ marginTop: 20 }}>
+                        <Header navigation={navigation} />
+                        <View style={styles.main}>
+                            <Image
+                                source={{ uri: `https://starwars-visualguide.com/assets/img/starships/${contentStarship.url.match(/\d+/)}.jpg` }}
+                                style={styles.imagePoster}
+                            />
+                            <View style={styles.content}>
+                                <Text style={styles.titleText}>{contentStarship.name}</Text>
+                                <View style={styles.subtitleTextContent}>
+                                    <Text style={styles.subtitleText}>Model: {contentStarship.model}</Text>
+                                    <Text style={styles.subtitleText}>Starship Class: {contentStarship.starship_class}</Text>
+                                    <Text style={styles.subtitleText}>Manufacturer: {contentStarship.manufacturer}</Text>
+                                    <Text style={styles.subtitleText}>Cost: {contentStarship.cost_in_credits} credits</Text>
+                                    <Text style={styles.subtitleText}>Max Atmosphering Speed: {contentStarship.max_atmosphering_speed}km/h</Text>
+                                    <Text style={styles.subtitleText}>Hyperdrive Rating: {contentStarship.hyperdrive_rating}</Text>
+                                    <Text style={styles.subtitleText}>MGLT: {contentStarship.MGLT}</Text>
+                                    <Text style={styles.subtitleText}>Crew: {contentStarship.crew}</Text>
+                                    <Text style={styles.subtitleText}>Passengers: {contentStarship.passengers}</Text>
+                                    <Text style={styles.subtitleText}>Cargo Capacity: {contentStarship.cargo_capacity}kg</Text>
+                                    <Text style={styles.subtitleText}>Length: {contentStarship.length}m</Text>
+                                    <Text style={styles.subtitleText}>Consumables: {contentStarship.consumables}</Text>
+                                </View>
                             </View>
                         </View>
-                    </View>
-                    <Text style={styles.titleText}>Related Pilots</Text>
-                    <View style={styles.related}>
-                        <FlatList
-                            data={pilotsData}
-                            keyExtractor={(item) => item.url}
-                            renderItem={({ item }) => {
-                                return (
-                                    <View style={styles.relatedListItem}>
-                                        <Image
-                                            source={{ uri: `https://starwars-visualguide.com/assets/img/people/${item.url.match(/\d+/)}.jpg` }}
-                                            style={styles.relatedImage}
-                                        />
-                                        <Text style={styles.relatedName}>{item.name}</Text>
-                                    </View>
-                                );
-                            }}
-                            ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related Pilots</Text>}
-                            numColumns={3}
-                            style={styles.relatedList}
-                        />
-                    </View>
-                    <Text style={styles.titleText}>Related Films</Text>
-                    <View style={styles.related}>
-                        <FlatList
-                            data={filmsData}
-                            keyExtractor={(item) => item.url}
-                            renderItem={({ item }) => {
-                                return (
-                                    <View style={styles.relatedListItem}>
-                                        <Image
-                                            source={{ uri: `https://starwars-visualguide.com/assets/img/films/${item.url.match(/\d+/)}.jpg` }}
-                                            style={styles.relatedImage}
-                                        />
-                                        <Text style={styles.relatedName}>{item.title}</Text>
-                                    </View>
-                                );
-                            }}
-                            ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related films</Text>}
-                            numColumns={3}
-                            style={styles.relatedList}
-                        />
-                    </View>
+                        <Text style={styles.titleText}>Related Pilots</Text>
+                        <View style={styles.related}>
+                            <FlatList
+                                data={pilotsData}
+                                keyExtractor={(item) => item.url}
+                                renderItem={({ item }) => {
+                                    return (
+                                        <View style={styles.relatedListItem}>
+                                            <Image
+                                                source={{ uri: `https://starwars-visualguide.com/assets/img/people/${item.url.match(/\d+/)}.jpg` }}
+                                                style={styles.relatedImage}
+                                            />
+                                            <Text style={styles.relatedName}>{item.name}</Text>
+                                        </View>
+                                    );
+                                }}
+                                ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related Pilots</Text>}
+                                horizontal
+                                style={styles.relatedList}
+                            />
+                        </View>
+                        <Text style={styles.titleText}>Related Films</Text>
+                        <View style={styles.related}>
+                            <FlatList
+                                data={filmsData}
+                                keyExtractor={(item) => item.url}
+                                renderItem={({ item }) => {
+                                    return (
+                                        <View style={styles.relatedListItem}>
+                                            <Image
+                                                source={{ uri: `https://starwars-visualguide.com/assets/img/films/${item.url.match(/\d+/)}.jpg` }}
+                                                style={styles.relatedImage}
+                                            />
+                                            <Text style={styles.relatedName}>{item.title}</Text>
+                                        </View>
+                                    );
+                                }}
+                                ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related films</Text>}
+                                horizontal
+                                style={styles.relatedList}
+                            />
+                        </View>
+                    </ScrollView>
                 </SafeAreaView>
             </ImageBackground>
         </View>
@@ -153,11 +155,11 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         marginVertical: 20,
         alignItems: 'center',
-        width:'100%',
-        justifyContent:'space-between',
-        height:450,
-        marginTop:40,
-        marginBottom:40
+        width: '100%',
+        justifyContent: 'space-between',
+        height: 450,
+        marginTop: 40,
+        marginBottom: 40
     },
     imagePoster: {
         height: '40%',
@@ -172,7 +174,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        width:'100%'
+        width: '100%'
     },
     titleText: {
         color: '#FFF',
@@ -203,7 +205,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: 'rgba(255,255,255,.5)',
         lineHeight: 25,
-        marginBottom:10
+        marginBottom: 10
     },
     relatedList: {
         textAlign: 'center',
