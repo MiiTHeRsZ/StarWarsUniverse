@@ -98,15 +98,16 @@ const styles = StyleSheet.create({
         borderColor: 'rgba(255,255,255,.5)',
         width: '100%',
         alignSelf: 'center',
-        zIndex:-1,
-        marginTop:80,
-        height:((Dimensions.get('window').height)-200),
+        zIndex: -1,
+        marginTop: 70,
+        marginBottom: 10,
+        height: 'auto',
     },
     list: {
         backgroundColor: 'rgba(53, 53, 53, .9)',
         height: Dimensions.get('window').height - 180,
         borderRadius: 30,
-        position:'relative'
+        position: 'relative'
 
     },
     separatorComponent: {
@@ -124,8 +125,8 @@ const styles = StyleSheet.create({
     },
     itemImage: {
         borderRadius: 50,
-        width: 75,
-        height: 75,
+        width: 70,
+        height: 70,
         marginRight: 10,
         borderWidth: 2,
         borderColor: 'rgba(221,185,0,.9)',

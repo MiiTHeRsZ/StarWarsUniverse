@@ -24,7 +24,7 @@ export default function Home({ navigation }) {
             <ImageBackground source={spaceBackground} style={styles.spaceBackground}>
                 <SafeAreaView style={styles.innerBody}>
                     <Header navigation={navigation} />
-<View style={styles.test}>
+<View style={styles.resultBox}>
 
                     <Search contentAPI={(content) => setContent(content)} />
                     {renderContent()}
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         height: 500,
 
     },
-    test:{
+    resultBox:{
         marginTop:25,
     }
 });

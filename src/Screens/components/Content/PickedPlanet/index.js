@@ -61,10 +61,13 @@ export default function PickedFilm({ route, navigation }) {
                     <View style={styles.main}>
                         <Image
                             source={{ uri: `https://starwars-visualguide.com/assets/img/planets/${contentPlanet.url.match(/\d+/)}.jpg` }}
+                            
+                            defaultSource={{uri:'https://starwars-visualguide.com/assets/img/big-placeholder.jpg'}}
+                            
                             style={styles.imagePoster}
                         />
                         <View style={styles.content}>
-                        <Text style={styles.titleText}>{contentPlanet.name}</Text>
+                            <Text style={styles.titleText}>{contentPlanet.name}</Text>
                             <View style={styles.subtitleTextContent}>
                                 <Text style={styles.subtitleText}>Population: {contentPlanet.population}</Text>
                                 <Text style={styles.subtitleText}>Rotation Period: {contentPlanet.rotation_period} days</Text>
@@ -143,26 +146,27 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     innerBody: {
-        padding: 25,
+        padding: 15,
     },
     main: {
         flexDirection: 'row',
         marginVertical: 20,
-        alignItems: 'center',
+        marginTop: 40
     },
     imagePoster: {
-        height: 245,
+        height: 170,
         width: 170,
-        borderRadius: 15,
-        borderWidth: 1,
+        borderRadius: 360 / 4,
+        borderWidth: 2,
         borderColor: 'rgba(221,185,0,.9)',
+        alignSelf: 'center',
     },
     content: {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
         paddingHorizontal: 20,
-        maxWidth: 184,
+        maxWidth: 180,
     },
     titleText: {
         color: '#FFF',
@@ -176,16 +180,24 @@ const styles = StyleSheet.create({
         color: '#FFF',
         borderRadius: 15,
         padding: 10,
+        borderWidth: 2,
+        borderColor: 'rgba(255,255,255,.5)',
+        lineHeight: 25,
+        justifyContent: "space-around"
     },
     subtitleText: {
         color: '#FFF',
         lineHeight: 25
     },
     related: {
-        backgroundColor: 'rgba(92, 92, 92, .8)',
+        backgroundColor: 'rgba(53, 53, 53, .9)',
+        color: '#FFF',
+        borderRadius: 15,
+        padding: 15,
         borderWidth: 2,
-        borderColor: '#5C5C5C',
-        borderRadius: 25,
+        borderColor: 'rgba(255,255,255,.5)',
+        lineHeight: 25,
+        marginBottom: 10
     },
     relatedList: {
         textAlign: 'center',
