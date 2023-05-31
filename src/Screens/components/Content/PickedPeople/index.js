@@ -192,6 +192,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#202020',
     },
+
     container: {
         flex: 1,
         justifyContent: 'space-between',
@@ -201,6 +202,12 @@ const styles = StyleSheet.create({
         flex: 1,
         height: '100%',
         width: '100%',
+    },
+    body: {
+        paddingHorizontal: 10,
+        paddingBottom: 10,
+        alignContent: 'center',
+
     },
     innerBody: {
         padding: 15,
@@ -253,11 +260,12 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(53, 53, 53, .9)',
         color: '#FFF',
         borderRadius: 15,
-        padding: 15,
+        padding: 10,
         borderWidth: 2,
         borderColor: 'rgba(255,255,255,.5)',
         lineHeight: 25,
-        marginBottom: 10
+        marginBottom: 10,
+        
     },
     relatedList: {
         textAlign: 'center',
@@ -265,9 +273,8 @@ const styles = StyleSheet.create({
     relatedListItem: {
         flex: 1,
         alignItems: 'center',
-        paddingVertical: 20,
-        paddingHorizontal: 10,
-        width: 80,
+        marginVertical:15,
+        width: 90,
     },
     relatedImage: {
         borderRadius: 50,
@@ -279,6 +286,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#FFF',
         fontWeight: 'bold',
+        fontSize:15
     },
 });
 
