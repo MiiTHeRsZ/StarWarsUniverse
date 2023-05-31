@@ -253,11 +253,12 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(53, 53, 53, .9)',
         color: '#FFF',
         borderRadius: 15,
-        padding: 15,
+        padding: 10,
         borderWidth: 2,
         borderColor: 'rgba(255,255,255,.5)',
         lineHeight: 25,
-        marginBottom: 10
+        marginBottom: 10,
+        
     },
     relatedList: {
         textAlign: 'center',
@@ -265,9 +266,8 @@ const styles = StyleSheet.create({
     relatedListItem: {
         flex: 1,
         alignItems: 'center',
-        paddingVertical: 20,
-        paddingHorizontal: 10,
-        width: 80,
+        marginVertical:15,
+        width: 90,
     },
     relatedImage: {
         borderRadius: 50,
@@ -279,6 +279,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#FFF',
         fontWeight: 'bold',
+        fontSize:15
     },
 });
 

@@ -105,6 +105,8 @@ export default function PickedFilm({ route, navigation }) {
                                             <Text>{/* Colocar o nome do personagem */}</Text>
                                         </View>
                                     }}
+                                    horizontal
+                                    
                                 />
                             </View>
                             <Text>Related Planets</Text>
@@ -119,6 +121,7 @@ export default function PickedFilm({ route, navigation }) {
                                             <Text>{/* Colocar o nome do planeta */}</Text>
                                         </View>
                                     }}
+                                    horizontal
                                 />
                             </View>
                             <Text>Related Starships</Text>
@@ -133,6 +136,7 @@ export default function PickedFilm({ route, navigation }) {
                                             <Text>{/* Colocar o nome do espaçonave */}</Text>
                                         </View>
                                     }}
+                                    horizontal
                                 />
                             </View>
                             <Text>Related Species</Text>
@@ -147,6 +151,7 @@ export default function PickedFilm({ route, navigation }) {
                                             <Text>{/* Colocar o nome do espécie */}</Text>
                                         </View>
                                     }}
+                                    horizontal
                                 />
                             </View>
                             <Text>Related Vehicles</Text>
@@ -161,6 +166,7 @@ export default function PickedFilm({ route, navigation }) {
                                             <Text>{/* Colocar o nome do veículo */}</Text>
                                         </View>
                                     }}
+                                    horizontal
                                 />
                             </View>
                         </ScrollView>
