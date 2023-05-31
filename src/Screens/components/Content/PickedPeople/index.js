@@ -54,7 +54,7 @@ export default function PickedPeople({ route, navigation }) {
 
         const fetchStarshipsInfo = async (url) => {
             const data = await fetch(url).then((response) => response.json());
-            return { url: data.url, title: data.name };
+            return { url: data.url, name: data.name };
         };
 
         const starshipsInfo = contentPeople.starships.map((url) => fetchStarshipsInfo(url));
@@ -69,7 +69,7 @@ export default function PickedPeople({ route, navigation }) {
 
         const fetchVehiclesInfo = async (url) => {
             const data = await fetch(url).then((response) => response.json());
-            return { url: data.url, title: data.name };
+            return { url: data.url, name: data.name };
         };
 
         const vehiclesInfo = contentPeople.vehicles.map((url) => fetchVehiclesInfo(url));
@@ -95,7 +95,7 @@ export default function PickedPeople({ route, navigation }) {
         <View style={styles.container}>
             <ImageBackground source={spaceBackground} style={styles.spaceBackground}>
                 <SafeAreaView style={styles.innerBody}>
-                    <ScrollView style={{marginTop:20}}>
+                    <ScrollView style={{ marginTop: 20 }}>
                         <Header navigation={navigation} />
                         <View style={styles.main}>
                             <Image
@@ -265,7 +265,7 @@ const styles = StyleSheet.create({
         borderColor: 'rgba(255,255,255,.5)',
         lineHeight: 25,
         marginBottom: 10,
-        
+
     },
     relatedList: {
         textAlign: 'center',
@@ -273,7 +273,7 @@ const styles = StyleSheet.create({
     relatedListItem: {
         flex: 1,
         alignItems: 'center',
-        marginVertical:15,
+        marginVertical: 15,
         width: 90,
     },
     relatedImage: {
@@ -286,7 +286,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#FFF',
         fontWeight: 'bold',
-        fontSize:15
+        fontSize: 15
     },
 });
 
