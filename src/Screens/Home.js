@@ -17,7 +17,6 @@ export default function Home({ navigation }) {
         } else {
             return <Content content={content} navigation={navigation} style={styles.content} />
         }
-
     }
 
     return (
@@ -25,8 +24,12 @@ export default function Home({ navigation }) {
             <ImageBackground source={spaceBackground} style={styles.spaceBackground}>
                 <SafeAreaView style={styles.innerBody}>
                     <Header navigation={navigation} />
+<View style={styles.resultBox}>
+
                     <Search contentAPI={(content) => setContent(content)} />
                     {renderContent()}
+</View>
+
                 </SafeAreaView>
             </ImageBackground>
         </View>
@@ -45,17 +48,21 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     innerBody: {
-        padding:25,
+        padding: 25,
     },
     babyYoda: {
         alignSelf: 'center',
-        width: ((Dimensions.get('window').width) -10),
-        height: ((Dimensions.get('window').height) - (Dimensions.get('window').width) -80),
+        width: ((Dimensions.get('window').width) - 10),
+        height: ((Dimensions.get('window').height) / 2),
         position: 'absolute',
-        top:250,
-        zIndex:-1,
+        top: ((Dimensions.get('window').height)/5-10),
+        zIndex: -1,
     },
     content: {
         height: 500,
+
+    },
+    resultBox:{
+        marginTop:25,
     }
 });

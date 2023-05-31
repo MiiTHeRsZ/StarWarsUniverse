@@ -1,82 +1,56 @@
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, FlatList, Image, ImageBackground, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, FlatList, Image, ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import Header from "../../Header";
 
 import spaceBackground from '../../../../assets/imgs/space-background.jpg';
 
-export default function PickedPeople({ route, navigation }) {
-    const [contentPeople, setContentPeople] = useState(route.params);
+export default function PickedFilm({ route, navigation }) {
+    const [contentSpecie, setContentSpecie] = useState(route.params);
 
-    const [speciesName, setSpeciesName] = useState('Unknown');
     const [homeworldName, setHomeworldName] = useState('Unknown');
 
+    const [charactersData, setCharactersData] = useState([]);
     const [filmsData, setFilmsData] = useState([]);
-    const [starshipsData, setStarshipsData] = useState([]);
-    const [vehiclesData, setVehiclesData] = useState([]);
 
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const fetchSpeciesName = async () => {
-            if (contentPeople.species.length > 0) {
-                await fetch(contentPeople.species[0])
-                    .then(response => response.json())
-                    .then(data => setSpeciesName(data.name));
-            }
-        };
-
         const fetchHomeworldName = async () => {
-            await fetch(contentPeople.homeworld)
+            await fetch(contentSpecie.homeworld)
                 .then(response => response.json())
                 .then(data => setHomeworldName(data.name));
         };
 
-        fetchSpeciesName();
         fetchHomeworldName();
     }, []);
 
     useEffect(() => {
+        const fetchInfo = async (url) => {
+            const data = await fetch(url).then((response) => response.json());
+            return { url: data.url, name: data.name };
+        };
+
+        const charactersInfo = contentSpecie.people.map((url) => fetchInfo(url));
+
+        Promise.all(charactersInfo)
+            .then((info) => {
+                setCharactersData(info);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
         const fetchFilmInfo = async (url) => {
             const data = await fetch(url).then((response) => response.json());
             return { url: data.url, title: data.title };
         };
 
-        const filmsInfo = contentPeople.films.map((url) => fetchFilmInfo(url));
+        const filmsInfo = contentSpecie.films.map((url) => fetchFilmInfo(url));
 
         Promise.all(filmsInfo)
             .then((info) => {
                 setFilmsData(info);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-
-        const fetchStarshipsInfo = async (url) => {
-            const data = await fetch(url).then((response) => response.json());
-            return { url: data.url, title: data.name };
-        };
-
-        const starshipsInfo = contentPeople.starships.map((url) => fetchStarshipsInfo(url));
-
-        Promise.all(starshipsInfo)
-            .then((info) => {
-                setStarshipsData(info);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-
-        const fetchVehiclesInfo = async (url) => {
-            const data = await fetch(url).then((response) => response.json());
-            return { url: data.url, title: data.name };
-        };
-
-        const vehiclesInfo = contentPeople.vehicles.map((url) => fetchVehiclesInfo(url));
-
-        Promise.all(vehiclesInfo)
-            .then((info) => {
-                setVehiclesData(info);
             })
             .catch((error) => {
                 console.log(error);
@@ -95,88 +69,68 @@ export default function PickedPeople({ route, navigation }) {
         <View style={styles.container}>
             <ImageBackground source={spaceBackground} style={styles.spaceBackground}>
                 <SafeAreaView style={styles.innerBody}>
-                    <Header navigation={navigation} />
-                    <View style={styles.main}>
-                        <Image
-                            source={{ uri: `https://starwars-visualguide.com/assets/img/characters/${contentPeople.url.match(/\d+/)}.jpg` }}
-                            style={styles.imagePoster}
-                        />
-                        <View style={styles.contentFilm}>
-                            <Text style={styles.textTitle}>{contentPeople.name}</Text>
-                            <View style={styles.contentTextSubtitle}>
-                                <Text style={styles.textSubtitle}>Birth Year: {contentPeople.birth_year}</Text>
-                                <Text style={styles.textSubtitle}>Specie: {speciesName}</Text>
-                                <Text style={styles.textSubtitle}>Gender: {contentPeople.gender}</Text>
-                                <Text style={styles.textSubtitle}>Height: {contentPeople.height}cm</Text>
-                                <Text style={styles.textSubtitle}>Mass: {contentPeople.mass}Kg</Text>
-                                <Text style={styles.textSubtitle}>Homeworld: {homeworldName}</Text>
+                    <ScrollView style={{ marginTop: 20 }}>
+                        <Header navigation={navigation} />
+                        <View style={styles.main}>
+                            <Image
+                                source={{ uri: `https://starwars-visualguide.com/assets/img/species/${contentSpecie.url.match(/\d+/)}.jpg` }}
+                                style={styles.imagePoster}
+                            />
+                            <View style={styles.content}>
+                                <Text style={styles.titleText}>{contentSpecie.name}</Text>
+                                <View style={styles.subtitleTextContent}>
+                                    <Text style={styles.subtitleText}>Classification: {contentSpecie.classification}</Text>
+                                    <Text style={styles.subtitleText}>designation: {contentSpecie.designation}</Text>
+                                    <Text style={styles.subtitleText}>Average Lifespan: {contentSpecie.average_lifespan} years</Text>
+                                    <Text style={styles.subtitleText}>Average Height: {contentSpecie.average_height}cm</Text>
+                                    <Text style={styles.subtitleText}>Homeworld: {homeworldName}</Text>
+                                    <Text style={styles.subtitleText}>Language: {contentSpecie.language}</Text>
+                                </View>
                             </View>
                         </View>
-                    </View>
-
-                    <Text style={styles.textTitle}>Related Films</Text>
-                    <View style={styles.related}>
-                        <FlatList
-                            data={filmsData}
-                            keyExtractor={(item) => item.url}
-                            renderItem={({ item }) => {
-                                return (
-                                    <View style={styles.relatedListItem}>
-                                        <Image
-                                            source={{ uri: `https://starwars-visualguide.com/assets/img/films/${item.url.match(/\d+/)}.jpg` }}
-                                            style={styles.imageRelated}
-                                        />
-                                        <Text style={styles.nameRelated}>{item.title}</Text>
-                                    </View>
-                                );
-                            }}
-                            ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related starships</Text>}
-                            numColumns={3}
-                            style={styles.relatedList}
-                        />
-                    </View>
-                    <Text style={styles.textTitle}>Related Starships</Text>
-                    <View style={styles.related}>
-                        <FlatList
-                            data={starshipsData}
-                            keyExtractor={(item) => item.url}
-                            renderItem={({ item }) => {
-                                return (
-                                    <View style={styles.relatedListItem}>
-                                        <Image
-                                            source={{ uri: `https://starwars-visualguide.com/assets/img/starships/${item.url.match(/\d+/)}.jpg` }}
-                                            style={styles.imageRelated}
-                                        />
-                                        <Text style={styles.nameRelated}>{item.name}</Text>
-                                    </View>
-                                );
-                            }}
-                            ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related starships</Text>}
-                            numColumns={3}
-                            style={styles.relatedList}
-                        />
-                    </View>
-                    <Text style={styles.textTitle}>Related Vehicles</Text>
-                    <View style={styles.related}>
-                        <FlatList
-                            data={vehiclesData}
-                            keyExtractor={(item) => item.url}
-                            renderItem={({ item }) => {
-                                return (
-                                    <View style={styles.relatedListItem}>
-                                        <Image
-                                            source={{ uri: `https://starwars-visualguide.com/assets/img/vehicles/${item.url.match(/\d+/)}.jpg` }}
-                                            style={styles.imageRelated}
-                                        />
-                                        <Text style={styles.nameRelated}>{item.name}</Text>
-                                    </View>
-                                );
-                            }}
-                            ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related starships</Text>}
-                            numColumns={3}
-                            style={styles.relatedList}
-                        />
-                    </View>
+                        <Text style={styles.titleText}>Related Characters</Text>
+                        <View style={styles.related}>
+                            <FlatList
+                                data={charactersData}
+                                keyExtractor={(item) => item.url}
+                                renderItem={({ item }) => {
+                                    return (
+                                        <View style={styles.relatedListItem}>
+                                            <Image
+                                                source={{ uri: `https://starwars-visualguide.com/assets/img/characters/${item.url.match(/\d+/)}.jpg` }}
+                                                style={styles.relatedImage}
+                                            />
+                                            <Text style={styles.relatedName}>{item.name}</Text>
+                                        </View>
+                                    );
+                                }}
+                                ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related characters</Text>}
+                                horizontal
+                                style={styles.relatedList}
+                            />
+                        </View>
+                        <Text style={styles.titleText}>Related Films</Text>
+                        <View style={styles.related}>
+                            <FlatList
+                                data={filmsData}
+                                keyExtractor={(item) => item.url}
+                                renderItem={({ item }) => {
+                                    return (
+                                        <View style={styles.relatedListItem}>
+                                            <Image
+                                                source={{ uri: `https://starwars-visualguide.com/assets/img/films/${item.url.match(/\d+/)}.jpg` }}
+                                                style={styles.relatedImage}
+                                            />
+                                            <Text style={styles.relatedName}>{item.title}</Text>
+                                        </View>
+                                    );
+                                }}
+                                ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related films</Text>}
+                                horizontal
+                                style={styles.relatedList}
+                            />
+                        </View>
+                    </ScrollView>
                 </SafeAreaView>
             </ImageBackground>
         </View>
@@ -201,43 +155,62 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     innerBody: {
-        padding: 25,
+        padding: 15,
     },
     main: {
         flexDirection: 'row',
-        alignItems: 'center',
         marginVertical: 20,
+        height: 260,
+        marginTop: 40,
+
     },
     imagePoster: {
-        height: 245,
+        height: 250,
         width: 170,
-        borderRadius: 5,
+        borderRadius: 15,
+        borderWidth: 2,
+        borderColor: 'rgba(221,185,0,.9)',
+        objectFit: 'fill',
+        alignSelf: 'flex-end'
     },
-    contentFilm: {
+    content: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
         paddingHorizontal: 20,
-        maxWidth: 184,
+        maxWidth: 180,
     },
-    textTitle: {
+    titleText: {
         color: '#FFF',
         paddingVertical: 5,
         fontSize: 20,
         fontWeight: 'bold',
         textAlign: 'center',
     },
-    contentTextSubtitle: {
+    subtitleTextContent: {
         backgroundColor: 'rgba(92, 92, 92, .6)',
         color: '#FFF',
         borderRadius: 15,
         padding: 10,
+        borderWidth: 2,
+        borderColor: 'rgba(255,255,255,.5)',
+        lineHeight: 25,
+        justifyContent: "space-around"
     },
-    textSubtitle: {
+    subtitleText: {
         color: '#FFF',
+        lineHeight: 22
     },
     related: {
-        backgroundColor: 'rgba(92, 92, 92, .8)',
+        backgroundColor: 'rgba(53, 53, 53, .9)',
+        color: '#FFF',
+        borderRadius: 15,
+        padding: 10,
         borderWidth: 2,
-        borderColor: '#5C5C5C',
-        borderRadius: 25,
+        borderColor: 'rgba(255,255,255,.5)',
+        lineHeight: 25,
+        marginBottom: 10,
+
     },
     relatedList: {
         textAlign: 'center',
@@ -245,20 +218,19 @@ const styles = StyleSheet.create({
     relatedListItem: {
         flex: 1,
         alignItems: 'center',
-        paddingVertical: 20,
-        paddingHorizontal: 10,
-        width: 80,
+        marginVertical: 15,
+        width: 90,
     },
-    imageRelated: {
+    relatedImage: {
         borderRadius: 50,
         width: 60,
         height: 60,
         marginBottom: 10,
     },
-    nameRelated: {
+    relatedName: {
         textAlign: 'center',
         color: '#FFF',
         fontWeight: 'bold',
+        fontSize: 15
     },
 });
-

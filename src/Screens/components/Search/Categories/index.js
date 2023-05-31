@@ -34,18 +34,6 @@ const Categories = (props) => {
         setDropdownCategory(false);
     };
 
-    // TODO Perguntar ao professor sobre essa parte
-    // ! Atualmente em desuso
-
-    const renderItem = ({ item }) => {
-        <TouchableOpacity
-            style={styles.dropdownCategory}
-            onPress={() => handleCategorySelect(item.url)}
-        >
-            <Text style={styles.dropdownCategoryText}>{item.name}</Text>
-        </TouchableOpacity>
-    }
-
     const renderDropdown = () => {
         if (!categories.length) {
             return null;
@@ -66,6 +54,7 @@ const Categories = (props) => {
                     </TouchableOpacity>
                 )}
                 keyExtractor={(item) => item.key}
+                ItemSeparatorComponent={<View style={styles.separatorComponent} />}
                 style={styles.dropdownCategoryItems}
             />
         );
@@ -96,11 +85,10 @@ const styles = StyleSheet.create({
         paddingVertical: 5,
         paddingHorizontal: 5,
         borderColor: 'rgba(255,255,255,.5)',
-        borderWidth:1,
-        borderRadius:25,
-        marginBottom:2,
-        marginRight:5,
-        justifyContent:'center'
+        borderWidth: 1,
+        borderRadius: 25,
+        marginBottom: 2,
+        marginRight: 5,
     },
     dropdownHeaderText: {
         textAlign: 'center',
@@ -108,24 +96,31 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#FFF',
     },
+    separatorComponent: {
+        backgroundColor: 'rgba(221,185,0,.9)',
+        width: '80%',
+        height: 2,
+        alignSelf: 'center',
+        borderRadius: 5,
+    },
     dropdownCategoryItems: {
-        width: 120,
-        backgroundColor:'rgba(31,31,31,.9)',
+        width: 110,
+        backgroundColor: 'rgba(53, 53, 53, .9)',
         borderRadius: 15,
         borderColor: 'rgba(255,255,255,.5)',
-        borderWidth:1,
+        borderWidth: 1,
     },
     dropdownCategory: {
         paddingVertical: 5,
-       paddingHorizontal: 2,
+        paddingHorizontal: 2,
+        zIndex:4
     },
     dropdownCategoryText: {
         textAlign: 'center',
         fontSize: 19,
         color: '#fff',
-        backgroundColor: 'rgba(53, 53, 53, .9)',
-        borderRadius:25,
-        padding:5,
-        fontWeight:'bold',
+        borderRadius: 25,
+        padding: 5,
+        fontWeight: 'bold',
     }
 });

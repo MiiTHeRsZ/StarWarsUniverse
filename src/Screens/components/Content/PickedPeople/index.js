@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, FlatList, Image, ImageBackground, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, FlatList, Image, ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import Header from "../../Header";
 
@@ -94,28 +94,28 @@ export default function PickedPeople({ route, navigation }) {
     return (
         <View style={styles.container}>
             <ImageBackground source={spaceBackground} style={styles.spaceBackground}>
-                <View style={styles.body}>
-                    <SafeAreaView style={styles.innerBody}>
+                <SafeAreaView style={styles.innerBody}>
+                    <ScrollView style={{marginTop:20}}>
                         <Header navigation={navigation} />
                         <View style={styles.main}>
                             <Image
                                 source={{ uri: `https://starwars-visualguide.com/assets/img/characters/${contentPeople.url.match(/\d+/)}.jpg` }}
                                 style={styles.imagePoster}
                             />
-                            <View style={styles.contentFilm}>
-                                <Text style={styles.peopleName}>{contentPeople.name}</Text>
-                                <View style={styles.contentTextSubtitle}>
-                                    <Text style={styles.textSubtitle}>Birth Year: {contentPeople.birth_year}</Text>
-                                    <Text style={styles.textSubtitle}>Specie: {speciesName}</Text>
-                                    <Text style={styles.textSubtitle}>Gender: {contentPeople.gender}</Text>
-                                    <Text style={styles.textSubtitle}>Height: {contentPeople.height}cm</Text>
-                                    <Text style={styles.textSubtitle}>Mass: {contentPeople.mass}Kg</Text>
-                                    <Text style={styles.textSubtitle}>Homeworld: {homeworldName}</Text>
+                            <View style={styles.content}>
+                                <Text style={styles.titleText}>{contentPeople.name}</Text>
+                                <View style={styles.subtitleTextContent}>
+                                    <Text style={styles.subtitleText}>Birth Year: {contentPeople.birth_year}</Text>
+                                    <Text style={styles.subtitleText}>Specie: {speciesName}</Text>
+                                    <Text style={styles.subtitleText}>Gender: {contentPeople.gender}</Text>
+                                    <Text style={styles.subtitleText}>Height: {contentPeople.height}cm</Text>
+                                    <Text style={styles.subtitleText}>Mass: {contentPeople.mass}Kg</Text>
+                                    <Text style={styles.subtitleText}>Homeworld: {homeworldName}</Text>
                                 </View>
                             </View>
                         </View>
 
-                        <Text style={styles.textTitle}>Related Films</Text>
+                        <Text style={styles.titleText}>Related Films</Text>
                         <View style={styles.related}>
                             <FlatList
                                 data={filmsData}
@@ -125,18 +125,18 @@ export default function PickedPeople({ route, navigation }) {
                                         <View style={styles.relatedListItem}>
                                             <Image
                                                 source={{ uri: `https://starwars-visualguide.com/assets/img/films/${item.url.match(/\d+/)}.jpg` }}
-                                                style={styles.imageRelated}
+                                                style={styles.relatedImage}
                                             />
-                                            <Text style={styles.nameRelated}>{item.title}</Text>
+                                            <Text style={styles.relatedName}>{item.title}</Text>
                                         </View>
                                     );
                                 }}
-                                ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related starships</Text>}
-                                numColumns={3}
+                                ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related films</Text>}
+                                horizontal
                                 style={styles.relatedList}
                             />
                         </View>
-                        <Text style={styles.textTitle}>Related Starships</Text>
+                        <Text style={styles.titleText}>Related Starships</Text>
                         <View style={styles.related}>
                             <FlatList
                                 data={starshipsData}
@@ -146,18 +146,18 @@ export default function PickedPeople({ route, navigation }) {
                                         <View style={styles.relatedListItem}>
                                             <Image
                                                 source={{ uri: `https://starwars-visualguide.com/assets/img/starships/${item.url.match(/\d+/)}.jpg` }}
-                                                style={styles.imageRelated}
+                                                style={styles.relatedImage}
                                             />
-                                            <Text style={styles.nameRelated}>{item.name}</Text>
+                                            <Text style={styles.relatedName}>{item.name}</Text>
                                         </View>
                                     );
                                 }}
                                 ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related starships</Text>}
-                                numColumns={3}
+                                horizontal
                                 style={styles.relatedList}
                             />
                         </View>
-                        <Text style={styles.textTitle}>Related Vehicles</Text>
+                        <Text style={styles.titleText}>Related Vehicles</Text>
                         <View style={styles.related}>
                             <FlatList
                                 data={vehiclesData}
@@ -167,19 +167,19 @@ export default function PickedPeople({ route, navigation }) {
                                         <View style={styles.relatedListItem}>
                                             <Image
                                                 source={{ uri: `https://starwars-visualguide.com/assets/img/vehicles/${item.url.match(/\d+/)}.jpg` }}
-                                                style={styles.imageRelated}
+                                                style={styles.relatedImage}
                                             />
-                                            <Text style={styles.nameRelated}>{item.name}</Text>
+                                            <Text style={styles.relatedName}>{item.name}</Text>
                                         </View>
                                     );
                                 }}
-                                ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related starships</Text>}
-                                numColumns={3}
+                                ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related vehicles</Text>}
+                                horizontal
                                 style={styles.relatedList}
                             />
                         </View>
-                    </SafeAreaView>
-                </View>
+                    </ScrollView>
+                </SafeAreaView>
             </ImageBackground>
         </View>
     );
@@ -210,50 +210,40 @@ const styles = StyleSheet.create({
 
     },
     innerBody: {
-        paddingTop: 25
-    },
-
-    peopleName: {
-        color: '#FFF',
-        paddingVertical: 5,
-        fontSize: 20,
-        fontWeight: 'bold',
-        textAlign: 'center',
+        padding: 15,
     },
     main: {
         flexDirection: 'row',
-        height: 250,
-        marginBottom: 45,
-        marginTop: 20,
-        justifyContent: 'space-between',
-
+        marginVertical: 20,
+        height: 260,
+        marginTop: 40,
     },
     imagePoster: {
         height: 250,
-        width: 175,
+        width: 170,
         borderRadius: 15,
         borderWidth: 2,
         borderColor: 'rgba(221,185,0,.9)',
-        alignSelf: 'center',
+        alignSelf: 'flex-end',
+        objectFit: 'fill'
+    },
+    content: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        paddingHorizontal: 20,
+        maxWidth: 180,
 
     },
-    contentFilm: {
-        alignSelf: 'center',
-        height: 250,
-        width: '41%',
-        justifyContent: 'space-between'
-    },
-    textTitle: {
+    titleText: {
         color: '#FFF',
         paddingVertical: 5,
         fontSize: 20,
         fontWeight: 'bold',
         textAlign: 'center',
-
     },
-    contentTextSubtitle: {
-        flex: 1,
-        backgroundColor: 'rgba(53, 53, 53, .9)',
+    subtitleTextContent: {
+        backgroundColor: 'rgba(92, 92, 92, .6)',
         color: '#FFF',
         borderRadius: 15,
         padding: 15,
@@ -262,35 +252,41 @@ const styles = StyleSheet.create({
         lineHeight: 25,
         justifyContent: "space-around"
     },
-    textSubtitle: {
+    subtitleText: {
         color: '#FFF',
+        lineHeight: 25
     },
     related: {
         backgroundColor: 'rgba(53, 53, 53, .9)',
+        color: '#FFF',
+        borderRadius: 15,
+        padding: 10,
         borderWidth: 2,
         borderColor: 'rgba(255,255,255,.5)',
-        borderRadius: 25,
+        lineHeight: 25,
+        marginBottom: 10,
+        
     },
     relatedList: {
         textAlign: 'center',
     },
     relatedListItem: {
         flex: 1,
-        alignItems: 'flex-start',
-        paddingVertical: 20,
-        paddingHorizontal: 25,
-        width: 80,
+        alignItems: 'center',
+        marginVertical:15,
+        width: 90,
     },
-    imageRelated: {
+    relatedImage: {
         borderRadius: 50,
         width: 60,
         height: 60,
         marginBottom: 10,
     },
-    nameRelated: {
+    relatedName: {
         textAlign: 'center',
         color: '#FFF',
         fontWeight: 'bold',
+        fontSize:15
     },
 });
 
