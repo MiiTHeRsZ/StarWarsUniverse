@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
         borderColor: 'rgba(255,255,255,.5)',
         lineHeight: 25,
         marginBottom: 10,
-        
+
     },
     relatedList: {
         textAlign: 'center',
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
     relatedListItem: {
         flex: 1,
         alignItems: 'center',
-        marginVertical:15,
+        marginVertical: 15,
         width: 90,
     },
     relatedImage: {
@@ -219,11 +219,14 @@ const styles = StyleSheet.create({
         width: 60,
         height: 60,
         marginBottom: 10,
+        borderWidth: 1.5,
+        borderColor: 'rgba(221,185,0,.9)',
     },
     relatedName: {
         textAlign: 'center',
         color: '#FFF',
         fontWeight: 'bold',
-        fontSize:15
+        fontSize: 15,
+        width: '75%'
     },
 });

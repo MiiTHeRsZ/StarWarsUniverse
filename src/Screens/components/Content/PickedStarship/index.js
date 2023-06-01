@@ -222,11 +222,14 @@ const styles = StyleSheet.create({
         width: 60,
         height: 60,
         marginBottom: 10,
+        borderWidth: 1.5,
+        borderColor: 'rgba(221,185,0,.9)',
     },
     relatedName: {
         textAlign: 'center',
         color: '#FFF',
         fontWeight: 'bold',
-        fontSize: 15
+        fontSize: 15,
+        width:'75%'
     },
 });
