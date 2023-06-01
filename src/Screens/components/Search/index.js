@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         position:'absolute',
         
+        
     },
     icon: {
         height: 44,

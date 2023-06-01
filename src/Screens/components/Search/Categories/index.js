@@ -79,15 +79,17 @@ const styles = StyleSheet.create({
     dropdownHeader: {
         backgroundColor: 'rgba(53, 53, 53, .9)',
         color: '#fff',
-        width: 110,
-        maxWidth: 110,
-        paddingVertical: 10,
+        width: 120,
+        height: 45,
+        maxWidth: 120,
+        paddingVertical: 5,
         paddingHorizontal: 5,
         borderColor: 'rgba(255,255,255,.5)',
         borderWidth: 1,
         borderRadius: 25,
         marginBottom: 2,
         marginRight: 5,
+        justifyContent:'center'
     },
     dropdownHeaderText: {
         textAlign: 'center',
@@ -112,7 +114,7 @@ const styles = StyleSheet.create({
     dropdownCategory: {
         paddingVertical: 5,
         paddingHorizontal: 2,
-        zIndex:4
+        zIndex: 4
     },
     dropdownCategoryText: {
         textAlign: 'center',
