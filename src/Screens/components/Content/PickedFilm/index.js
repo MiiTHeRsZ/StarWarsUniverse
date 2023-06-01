@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, FlatList, Image, ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
-
-import Header from "../../Header";
-
+import { ActivityIndicator, FlatList, Image, StyleSheet, Text, View, ImageBackground, SafeAreaView, ScrollView } from "react-native";
 import spaceBackground from '../../../../assets/imgs/space-background.jpg';
+import Header from '../../Header'
 
 export default function PickedFilm({ route, navigation }) {
     const [contentFilm, setContentFilm] = useState(route.params);
@@ -14,6 +12,7 @@ export default function PickedFilm({ route, navigation }) {
     const [starshipsData, setStarshipsData] = useState([]);
     const [vehiclesData, setVehiclesData] = useState([]);
     const [speciesData, setSpeciesData] = useState([]);
+
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -23,6 +22,7 @@ export default function PickedFilm({ route, navigation }) {
         };
 
         const charactersInfo = contentFilm.characters.map((url) => fetchInfo(url));
+
         Promise.all(charactersInfo)
             .then((info) => {
                 setCharactersData(info);
@@ -32,6 +32,7 @@ export default function PickedFilm({ route, navigation }) {
             });
 
         const planetsInfo = contentFilm.planets.map((url) => fetchInfo(url));
+
         Promise.all(planetsInfo)
             .then((info) => {
                 setPlanetsData(info);
@@ -41,6 +42,7 @@ export default function PickedFilm({ route, navigation }) {
             });
 
         const starshipsInfo = contentFilm.starships.map((url) => fetchInfo(url));
+
         Promise.all(starshipsInfo)
             .then((info) => {
                 setStarshipsData(info);
@@ -50,6 +52,7 @@ export default function PickedFilm({ route, navigation }) {
             });
 
         const vehiclesInfo = contentFilm.vehicles.map((url) => fetchInfo(url));
+
         Promise.all(vehiclesInfo)
             .then((info) => {
                 setVehiclesData(info);
@@ -59,6 +62,7 @@ export default function PickedFilm({ route, navigation }) {
             });
 
         const speciesInfo = contentFilm.species.map((url) => fetchInfo(url));
+
         Promise.all(speciesInfo)
             .then((info) => {
                 setSpeciesData(info);
@@ -82,15 +86,17 @@ export default function PickedFilm({ route, navigation }) {
                 <View style={styles.body}>
                     <SafeAreaView style={styles.innerBody}>
                         <ScrollView style={{ marginTop: 20 }}>
+
                             <Header navigation={navigation} />
+
+
                             <View style={styles.main}>
                                 <Image
                                     source={{ uri: `https://starwars-visualguide.com/assets/img/films/${contentFilm.url.match(/\d+/)}.jpg` }}
                                     style={styles.imagePoster}
                                 />
-                                <View style={styles.content}>
-                                    <Text style={styles.filmName}>Episode {episode[contentFilm.episode_id]}</Text>
-                                    <Text style={styles.filmName}>{contentFilm.title}</Text>
+                                <View style={styles.contentFilm}>
+                                    <Text style={styles.filmName}>Episode {episode[contentFilm.episode_id]}: {contentFilm.title}</Text>
                                     <View style={styles.contentTextSubtitle}>
                                         <Text style={styles.textSubtitle}>Release date: {contentFilm.release_date}</Text>
                                         <Text style={styles.textSubtitle}>Director: {contentFilm.director}</Text>
@@ -100,9 +106,9 @@ export default function PickedFilm({ route, navigation }) {
                             </View>
                             <Text style={styles.textTitle}>Opening Crawl</Text>
                             <Text style={styles.openingCrawl}>{contentFilm.opening_crawl}</Text>
-
+                            
                             <Text style={styles.textTitle}>Related Characters</Text>
-                            <View>
+                            <View style={styles.related}>
                                 <FlatList
                                     data={charactersData}
                                     keyExtractor={(item) => item.url}
@@ -110,20 +116,21 @@ export default function PickedFilm({ route, navigation }) {
                                         return (
                                             <View style={styles.relatedListItem}>
                                                 <Image
-                                                    source={{ uri: `https://starwars-visualguide.com/assets/img/people/${item.url.match(/\d+/)}.jpg` }}
+                                                    source={{ uri: `https://starwars-visualguide.com/assets/img/characters/${item.url.match(/\d+/)}.jpg` }}
                                                     style={styles.relatedImage}
                                                 />
                                                 <Text style={styles.relatedName}>{item.name}</Text>
                                             </View>
                                         );
                                     }}
+
                                     ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related characters</Text>}
                                     horizontal
-                                    style={styles.relatedList}
+
                                 />
                             </View>
                             <Text style={styles.textTitle}>Related Planets</Text>
-                            <View>
+                            <View style={styles.related}>
                                 <FlatList
                                     data={planetsData}
                                     keyExtractor={(item) => item.url}
@@ -140,11 +147,10 @@ export default function PickedFilm({ route, navigation }) {
                                     }}
                                     ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related planets</Text>}
                                     horizontal
-                                    style={styles.relatedList}
                                 />
                             </View>
                             <Text style={styles.textTitle}>Related Starships</Text>
-                            <View>
+                            <View style={styles.related}>
                                 <FlatList
                                     data={starshipsData}
                                     keyExtractor={(item) => item.url}
@@ -161,11 +167,10 @@ export default function PickedFilm({ route, navigation }) {
                                     }}
                                     ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related starships</Text>}
                                     horizontal
-                                    style={styles.relatedList}
                                 />
                             </View>
                             <Text style={styles.textTitle}>Related Vehicles</Text>
-                            <View>
+                            <View style={styles.related}>
                                 <FlatList
                                     data={vehiclesData}
                                     keyExtractor={(item) => item.url}
@@ -182,11 +187,10 @@ export default function PickedFilm({ route, navigation }) {
                                     }}
                                     ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related vehicles</Text>}
                                     horizontal
-                                    style={styles.relatedList}
                                 />
                             </View>
                             <Text style={styles.textTitle}>Related Species</Text>
-                            <View>
+                            <View style={styles.related}>
                                 <FlatList
                                     data={speciesData}
                                     keyExtractor={(item) => item.url}
@@ -201,9 +205,8 @@ export default function PickedFilm({ route, navigation }) {
                                             </View>
                                         );
                                     }}
-                                    ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related staspeciesrships</Text>}
+                                    ListEmptyComponent={<Text style={{ color: 'white', fontSize: 20 }}>There are no related species</Text>}
                                     horizontal
-                                    style={styles.relatedList}
                                 />
                             </View>
                         </ScrollView>
@@ -211,8 +214,10 @@ export default function PickedFilm({ route, navigation }) {
                 </View>
             </ImageBackground>
         </View>
+
     );
 }
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -299,5 +304,41 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: 'rgba(255,255,255,.5)',
         lineHeight: 25,
-    }
+        marginBottom:15
+    },
+    related: {
+        backgroundColor: 'rgba(53, 53, 53, .9)',
+        color: '#FFF',
+        borderRadius: 15,
+        padding: 10,
+        borderWidth: 2,
+        borderColor: 'rgba(255,255,255,.5)',
+        lineHeight: 25,
+        marginBottom: 15,
+
+    },
+    relatedList: {
+        textAlign: 'center',
+    },
+    relatedListItem: {
+        flex: 1,
+        alignItems: 'center',
+        marginVertical: 15,
+        width: 90,
+    },
+    relatedImage: {
+        borderRadius: 50,
+        width: 60,
+        height: 60,
+        marginBottom: 10,
+        borderWidth: 1.5,
+        borderColor: 'rgba(221,185,0,.9)',
+    },
+    relatedName: {
+        textAlign: 'center',
+        color: '#FFF',
+        fontWeight: 'bold',
+        fontSize: 15,
+        width:'75%'
+    },
 });
