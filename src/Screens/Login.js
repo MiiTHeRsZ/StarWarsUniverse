@@ -17,8 +17,8 @@ import yodaIcon from '../assets/imgs/Yoda-icon.png'
 
 const MENSAGEM_EMAIL = 'Digite o seu e-mail.';
 const MENSAGEM_SENHA = 'Digite a sua senha.';
-const EMAIL = 'eve.holt@reqres.in';
-const SENHA = 'cityslicka';
+const EMAIL = 'starwarsuniverse@email.com';
+const SENHA = 'starWarsIsCool';
 
 export default function Login({ navigation }) {
   const [user, setUser] = useState(EMAIL);
