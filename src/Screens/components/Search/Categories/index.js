@@ -79,9 +79,9 @@ const styles = StyleSheet.create({
     dropdownHeader: {
         backgroundColor: 'rgba(53, 53, 53, .9)',
         color: '#fff',
-        width: 120,
+        width: 135,
         height: 45,
-        maxWidth: 120,
+        maxWidth: 135,
         paddingVertical: 5,
         paddingHorizontal: 5,
         borderColor: 'rgba(255,255,255,.5)',
@@ -89,13 +89,15 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         marginBottom: 2,
         marginRight: 5,
-        justifyContent:'center'
+        justifyContent:'center',
+        zIndex: 2
     },
     dropdownHeaderText: {
         textAlign: 'center',
         fontSize: 19,
         fontWeight: 'bold',
         color: '#FFF',
+        zIndex: 2
     },
     separatorComponent: {
         backgroundColor: 'rgba(221,185,0,.9)',
@@ -103,18 +105,20 @@ const styles = StyleSheet.create({
         height: 2,
         alignSelf: 'center',
         borderRadius: 5,
+        zIndex: 2
     },
     dropdownCategoryItems: {
-        width: 110,
+        width: 135,
         backgroundColor: 'rgba(53, 53, 53, .9)',
         borderRadius: 15,
         borderColor: 'rgba(255,255,255,.5)',
         borderWidth: 1,
+        zIndex: 2
     },
     dropdownCategory: {
         paddingVertical: 5,
         paddingHorizontal: 2,
-        zIndex: 4
+        zIndex: 1
     },
     dropdownCategoryText: {
         textAlign: 'center',
@@ -123,5 +127,6 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         padding: 5,
         fontWeight: 'bold',
+        zIndex: 2
     }
 });

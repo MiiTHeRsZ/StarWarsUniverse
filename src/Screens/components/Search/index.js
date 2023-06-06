@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Image, StyleSheet, TouchableOpacity, View, } from "react-native";
+import { Dimensions, Image, StyleSheet, TouchableOpacity, View, Platform,} from "react-native";
 
 import Categories from "./Categories";
 import TextField from "./TextField";
@@ -39,10 +39,11 @@ export default function Search(props) {
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         marginTop: 10,
         position:'absolute',
-        
+        alignSelf:'center',
+        width:'95%',
         
     },
     icon: {
