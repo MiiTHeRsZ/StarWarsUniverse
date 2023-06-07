@@ -212,30 +212,29 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   main: {
+    alignItems: 'center',
+    justifyContent: 'space-between',
     flexDirection: 'row',
     marginVertical: 20,
-    height: 300,
+    height: 260,
     marginTop: 40,
-    width:'100%',
-    alignItems: 'center',
   },
   imagePoster: {
-    height: 250,
+    height: '100%',
     width: 170,
     borderRadius: 15,
     borderWidth: 2,
     borderColor: 'rgba(221,185,0,.9)',
     objectFit: 'fill',
-    alignSelf: 'flex-end',
+    flex:1
   },
   content: {
     display: 'flex',
+    flex:1,
     flexDirection: 'column',
-    justifyContent:'flex-end',
-    paddingHorizontal: 20,
-    maxWidth: 210,
-    width:'100%',
-    height:'100%'
+    justifyContent: 'space-between',
+    alignItems:'center',
+    marginLeft:5
   },
   titleText: {
     color: '#FFF',
@@ -243,16 +242,19 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
+    justifyContent:'center'
   },
   subtitleTextContent: {
     backgroundColor: 'rgba(92, 92, 92, .6)',
     color: '#FFF',
     borderRadius: 15,
-    padding: 10,
+    padding: 15,
     borderWidth: 2,
     borderColor: 'rgba(255,255,255,.5)',
     lineHeight: 25,
-    justifyContent: 'space-around',
+    width:'100%',
+    flex:1,
+    justifyContent:'space-evenly'
     
   },
   subtitleText: {

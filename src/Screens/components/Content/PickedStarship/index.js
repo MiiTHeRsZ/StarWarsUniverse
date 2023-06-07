@@ -77,58 +77,58 @@ export default function PickedStarship({ route, navigation }) {
         <SafeAreaView style={styles.innerBody}>
           <ScrollView style={{ marginTop: 20 }}>
             <Header navigation={navigation} />
-              <View style={styles.content}>
-            <View style={styles.main}>
-              <Image
-                source={{
-                  uri: `https://starwars-visualguide.com/assets/img/starships/${contentStarship.url.match(
-                    /\d+/
-                  )}.jpg`,
-                }}
-                style={styles.imagePoster}
-              />
-                <Text style={styles.titleText}>{contentStarship.name}</Text>
-                <View style={styles.subtitleTextContent}>
-                  <Text style={styles.subtitleText}>
-                    Model: {contentStarship.model}
-                  </Text>
-                  <Text style={styles.subtitleText}>
-                    Starship Class: {contentStarship.starship_class}
-                  </Text>
-                  <Text style={styles.subtitleText}>
-                    Manufacturer: {contentStarship.manufacturer}
-                  </Text>
-                  <Text style={styles.subtitleText}>
-                    Cost: {contentStarship.cost_in_credits} credits
-                  </Text>
-                  <Text style={styles.subtitleText}>
-                    Max Atmosphering Speed:{' '}
-                    {contentStarship.max_atmosphering_speed}km/h
-                  </Text>
-                  <Text style={styles.subtitleText}>
-                    Hyperdrive Rating: {contentStarship.hyperdrive_rating}
-                  </Text>
-                  <Text style={styles.subtitleText}>
-                    MGLT: {contentStarship.MGLT}
-                  </Text>
-                  <Text style={styles.subtitleText}>
-                    Crew: {contentStarship.crew}
-                  </Text>
-                  <Text style={styles.subtitleText}>
-                    Passengers: {contentStarship.passengers}
-                  </Text>
-                  <Text style={styles.subtitleText}>
-                    Cargo Capacity: {contentStarship.cargo_capacity}kg
-                  </Text>
-                  <Text style={styles.subtitleText}>
-                    Length: {contentStarship.length}m
-                  </Text>
-                  <Text style={styles.subtitleText}>
-                    Consumables: {contentStarship.consumables}
-                  </Text>
+              <View style={styles.main}>
+                <Image
+                  source={{
+                    uri: `https://starwars-visualguide.com/assets/img/starships/${contentStarship.url.match(
+                      /\d+/
+                    )}.jpg`,
+                  }}
+                  style={styles.imagePoster}
+                />
+                <View style={styles.content}>
+                  <Text style={styles.titleText}>{contentStarship.name}</Text>
+                  <View style={styles.subtitleTextContent}>
+                    <Text style={styles.subtitleText}>
+                      Model: {contentStarship.model}
+                    </Text>
+                    <Text style={styles.subtitleText}>
+                      Starship Class: {contentStarship.starship_class}
+                    </Text>
+                    <Text style={styles.subtitleText}>
+                      Manufacturer: {contentStarship.manufacturer}
+                    </Text>
+                    <Text style={styles.subtitleText}>
+                      Cost: {contentStarship.cost_in_credits} credits
+                    </Text>
+                    <Text style={styles.subtitleText}>
+                      Max Atmosphering Speed:{' '}
+                      {contentStarship.max_atmosphering_speed}km/h
+                    </Text>
+                    <Text style={styles.subtitleText}>
+                      Hyperdrive Rating: {contentStarship.hyperdrive_rating}
+                    </Text>
+                    <Text style={styles.subtitleText}>
+                      MGLT: {contentStarship.MGLT}
+                    </Text>
+                    <Text style={styles.subtitleText}>
+                      Crew: {contentStarship.crew}
+                    </Text>
+                    <Text style={styles.subtitleText}>
+                      Passengers: {contentStarship.passengers}
+                    </Text>
+                    <Text style={styles.subtitleText}>
+                      Cargo Capacity: {contentStarship.cargo_capacity}kg
+                    </Text>
+                    <Text style={styles.subtitleText}>
+                      Length: {contentStarship.length}m
+                    </Text>
+                    <Text style={styles.subtitleText}>
+                      Consumables: {contentStarship.consumables}
+                    </Text>
+                  </View>
                 </View>
               </View>
-            </View>
             <Text style={styles.titleText}>Related Pilots</Text>
             <View style={styles.related}>
               <FlatList
@@ -219,14 +219,11 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   main: {
+    alignItems: 'center',
     flexDirection: 'column',
     marginVertical: 20,
-    alignItems: 'center',
-    width: '100%',
-    justifyContent: 'space-between',
-    height: 550,
+    height: 600,
     marginTop: 40,
-    marginBottom: 40,
   },
   imagePoster: {
     height: '40%',
@@ -239,11 +236,10 @@ const styles = StyleSheet.create({
   },
   content: {
     display: 'flex',
+    flex:1,
     flexDirection: 'column',
     justifyContent: 'space-between',
-    width: '100%',
-
-    //height:'100%'
+    width:'100%'
   },
   titleText: {
     color: '#FFF',
@@ -251,20 +247,23 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
+    justifyContent:'center'
   },
   subtitleTextContent: {
     backgroundColor: 'rgba(92, 92, 92, .6)',
     color: '#FFF',
     borderRadius: 15,
-    padding: 10,
+    padding: 15,
     borderWidth: 2,
     borderColor: 'rgba(255,255,255,.5)',
+    lineHeight: 25,
     width:'100%',
-    lineHeight: 15
+    flex:1,
+    justifyContent:'space-evenly'
   },
   subtitleText: {
     color: '#FFF',
-    
+
   },
   related: {
     backgroundColor: 'rgba(53, 53, 53, .9)',

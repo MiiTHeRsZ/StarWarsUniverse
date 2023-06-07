@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     dropdownHeader: {
         backgroundColor: 'rgba(53, 53, 53, .9)',
         color: '#fff',
-        width: 135,
+        width: 125,
         height: 45,
         maxWidth: 135,
         paddingVertical: 5,
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
         zIndex: 2
     },
     dropdownCategoryItems: {
-        width: 135,
+        width: 125,
         backgroundColor: 'rgba(53, 53, 53, .9)',
         borderRadius: 15,
         borderColor: 'rgba(255,255,255,.5)',

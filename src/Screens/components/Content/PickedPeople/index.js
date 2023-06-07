@@ -275,19 +275,21 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   imagePoster: {
-    height: 250,
+    height: '100%',
     width: 170,
     borderRadius: 15,
     borderWidth: 2,
     borderColor: 'rgba(221,185,0,.9)',
     objectFit: 'fill',
+    flex: 1
   },
   content: {
     display: 'flex',
+    flex: 1,
     flexDirection: 'column',
     justifyContent: 'space-between',
-    paddingHorizontal: 20,
-    width: 212,
+    alignItems: 'center',
+    marginLeft: 5
   },
   titleText: {
     color: '#FFF',
@@ -295,6 +297,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
+    justifyContent: 'center'
   },
   subtitleTextContent: {
     backgroundColor: 'rgba(92, 92, 92, .6)',
@@ -304,7 +307,10 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: 'rgba(255,255,255,.5)',
     lineHeight: 25,
-    justifyContent: 'space-around',
+    width: '100%',
+    flex: 1,
+    justifyContent: 'space-evenly'
+
   },
   subtitleText: {
     color: '#FFF',
