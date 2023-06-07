@@ -16,7 +16,7 @@ import Header from '../../Header';
 
 import spaceBackground from '../../../../assets/imgs/space-background.jpg';
 
-export default function PickedFilm({ route, navigation }) {
+export default function PickedVehicle({ route, navigation }) {
   const [contentVehicle, setContentVehicle] = useState(route.params);
 
   useEffect(() => {

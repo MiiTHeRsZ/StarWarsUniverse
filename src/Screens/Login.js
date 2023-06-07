@@ -13,7 +13,9 @@ import {
 
 import spaceBackground from '../assets/imgs/space-background.jpg';
 import logo from '../assets/imgs/Star_Wars_Logo.png';
-import yodaIcon from '../assets/imgs/Yoda-icon.png'
+import yodaIcon from '../assets/imgs/Yoda-icon.png';
+import imgOlhoAberto from '../assets/imgs/olhoAbert.png';
+import imgOlhoFechado from '../assets/imgs/olhoFechado.png';
 
 const MENSAGEM_EMAIL = 'Digite o seu e-mail.';
 const MENSAGEM_SENHA = 'Digite a sua senha.';
@@ -25,6 +27,17 @@ export default function Login({ navigation }) {
   const [password, setPassword] = useState(SENHA);
   const [status, setStatus] = useState('');
   const [activity, setActivity] = useState(false);
+  const [pass, setPass] = useState(true);
+  const [img, setImg] = useState(imgOlhoAberto);
+
+  function changeEye() {
+    setPass(!pass)
+    if (pass == false) {
+      setImg(imgOlhoAberto)
+    } else {
+      setImg(imgOlhoFechado)
+    }
+  };
 
   function openHome() {
     navigation.navigate('Home');
@@ -37,17 +50,24 @@ export default function Login({ navigation }) {
           <Image source={logo} style={Estilos.logo} />
           <Text style={Estilos.paragraph}>Fazer Login você deve</Text>
 
-          <Text style={Estilos.label}>Senha:</Text>
-          <TextInput
-            autoCorrect={false}
-            placeholder={MENSAGEM_SENHA}
-            placeholderTextColor="grey"
-            style={Estilos.textInput}
-            secureTextEntry={true}
-            clearButtonMode="always"
-            defaultValue={SENHA}
-            onChangeText={(value) => setPassword(value)}
-          />
+          <View style={Estilos.boxPassword}>
+            <Text style={Estilos.label}>Senha:</Text>
+            <TextInput
+              autoCorrect={false}
+              placeholder={MENSAGEM_SENHA}
+              placeholderTextColor="grey"
+              style={Estilos.textInputSenha}
+              secureTextEntry={pass}
+              clearButtonMode="never"
+              defaultValue={SENHA}
+              onChangeText={(value) => setPassword(value)}
+            />
+
+            <TouchableOpacity onPress={() => changeEye()} style={Estilos.showPass}>
+              <Image source={img} style={Estilos.imgOlho} />
+            </TouchableOpacity>
+
+          </View>
 
           <Text style={Estilos.label}>E-mail:</Text>
           <TextInput
@@ -55,7 +75,7 @@ export default function Login({ navigation }) {
             placeholder={MENSAGEM_EMAIL}
             placeholderTextColor="grey"
             style={Estilos.textInput}
-            clearButtonMode="always"
+            clearButtonMode="never"
             defaultValue={EMAIL}
             onChangeText={(value) => setUser(value)}
           />
@@ -101,6 +121,24 @@ const Estilos = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
+  boxPassword: {
+    width: 250,
+    alignSelf: 'center'
+  },
+  textInputSenha: {
+    backgroundColor: '#666',
+    color: 'white',
+    fontSize: 15,
+    height: 40,
+    width: 250,
+    marginBottom: 20,
+    marginHorizontal: 20,
+    paddingHorizontal: 10,
+    alignSelf: 'center',
+    borderRadius: 10,
+    padding: 8,
+    paddingRight: "20%"
+  },
   textInput: {
     backgroundColor: '#666',
     color: 'white',
@@ -113,6 +151,21 @@ const Estilos = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 10,
     padding: 8,
+  },
+  showPass: {
+    position: 'absolute',
+    top: '40%',
+    right: 5,
+    width: 40,
+    height: 40,
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  imgOlho: {
+    width: 25,
+    height: 25,
   },
   buto: {
     height: 65,
