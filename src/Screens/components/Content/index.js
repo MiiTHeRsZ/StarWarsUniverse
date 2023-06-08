@@ -114,11 +114,12 @@ const styles = StyleSheet.create({
     width: '100%',
     alignSelf: 'center',
     zIndex: Platform.OS === 'ios' ? -2 : 0,
-    marginTop: 70,
-    height: 'auto',
+    marginTop: '19%',
+    height: '83%',
+    backgroundColor: 'rgba(53, 53, 53, .9)',
   },
   list: {
-    backgroundColor: 'rgba(53, 53, 53, .9)',
+
     height: Dimensions.get('window').height - 180,
     borderRadius: 30,
     position: 'relative',

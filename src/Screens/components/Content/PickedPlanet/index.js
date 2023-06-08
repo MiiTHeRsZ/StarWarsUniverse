@@ -214,7 +214,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginVertical: 20,
     marginTop: 40,
-    backgroundColor: 'red'
   },
   imagePoster: {
     height: 170,
@@ -231,7 +230,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginLeft: 5,
-    backgroundColor: 'green'
   },
   titleText: {
     color: '#FFF',
