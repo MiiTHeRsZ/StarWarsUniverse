@@ -129,196 +129,195 @@ export default function PickedFilm({ route, navigation }) {
   return (
     <View style={styles.container}>
       <ImageBackground source={spaceBackground} style={styles.spaceBackground}>
-        <View style={styles.body}>
-          <SafeAreaView style={styles.innerBody}>
-            <ScrollView style={{ marginTop: 20 }}>
-              <Header navigation={navigation} />
 
-              <View style={styles.main}>
-                <Image
-                  source={{
-                    uri: `https://starwars-visualguide.com/assets/img/films/${contentFilm.url.match(
-                      /\d+/
-                    )}.jpg`,
-                  }}
-                  style={styles.imagePoster}
-                />
-                <View style={styles.contentFilm}>
-                  <Text style={styles.filmName}>
-                    Episode {episode[contentFilm.episode_id]}:{' '}
-                    {contentFilm.title}
+        <SafeAreaView style={styles.innerBody}>
+          <ScrollView style={{ marginTop: 20 }}>
+            <Header navigation={navigation} />
+
+            <View style={styles.main}>
+              <Image
+                source={{
+                  uri: `https://starwars-visualguide.com/assets/img/films/${contentFilm.url.match(
+                    /\d+/
+                  )}.jpg`,
+                }}
+                style={styles.imagePoster}
+              />
+              <View style={styles.contentFilm}>
+                <Text style={styles.filmName}>
+                  Episode {episode[contentFilm.episode_id]}:{' '}
+                  {contentFilm.title}
+                </Text>
+                <View style={styles.contentTextSubtitle}>
+                  <Text style={styles.textSubtitle}>
+                    Release date: {contentFilm.release_date}
                   </Text>
-                  <View style={styles.contentTextSubtitle}>
-                    <Text style={styles.textSubtitle}>
-                      Release date: {contentFilm.release_date}
-                    </Text>
-                    <Text style={styles.textSubtitle}>
-                      Director: {contentFilm.director}
-                    </Text>
-                    <Text style={styles.textSubtitle}>
-                      Producer: {contentFilm.producer}
-                    </Text>
-                  </View>
+                  <Text style={styles.textSubtitle}>
+                    Director: {contentFilm.director}
+                  </Text>
+                  <Text style={styles.textSubtitle}>
+                    Producer: {contentFilm.producer}
+                  </Text>
                 </View>
               </View>
-              <Text style={styles.textTitle}>Opening Crawl</Text>
-              <Text style={styles.openingCrawl}>
-                {contentFilm.opening_crawl}
-              </Text>
+            </View>
+            <Text style={styles.textTitle}>Opening Crawl</Text>
+            <Text style={styles.openingCrawl}>
+              {contentFilm.opening_crawl}
+            </Text>
 
-              <Text style={styles.textTitle}>Related Characters</Text>
-              <View style={styles.related}>
-                <FlatList
-                  data={charactersData}
-                  keyExtractor={(item) => item.url}
-                  renderItem={({ item }) => {
-                    return (
-                      <TouchableOpacity onPress={() => goPickedPeople(item)}>
-                        <View style={styles.relatedListItem}>
-                          <Image
-                            source={{
-                              uri: `https://starwars-visualguide.com/assets/img/characters/${item.url.match(
-                                /\d+/
-                              )}.jpg`,
-                            }}
-                            style={styles.relatedImage}
-                          />
-                          <Text style={styles.relatedName}>{item.name}</Text>
-                        </View>
-                      </TouchableOpacity>
-                    );
-                  }}
-                  ListEmptyComponent={
-                    <Text style={{ color: 'white', fontSize: 20 }}>
-                      There are no related characters
-                    </Text>
-                  }
-                  horizontal
-                />
-              </View>
-              <Text style={styles.textTitle}>Related Planets</Text>
-              <View style={styles.related}>
-                <FlatList
-                  data={planetsData}
-                  keyExtractor={(item) => item.url}
-                  renderItem={({ item }) => {
-                    return (
-                      <TouchableOpacity onPress={() => goPickedPlanet(item)}>
-                        <View style={styles.relatedListItem}>
-                          <Image
-                            source={{
-                              uri: `https://starwars-visualguide.com/assets/img/planets/${item.url.match(
-                                /\d+/
-                              )}.jpg`,
-                            }}
-                            style={styles.relatedImage}
-                          />
-                          <Text style={styles.relatedName}>{item.name}</Text>
-                        </View>
-                      </TouchableOpacity>
-                    );
-                  }}
-                  ListEmptyComponent={
-                    <Text style={{ color: 'white', fontSize: 20 }}>
-                      There are no related planets
-                    </Text>
-                  }
-                  horizontal
-                />
-              </View>
-              <Text style={styles.textTitle}>Related Starships</Text>
-              <View style={styles.related}>
-                <FlatList
-                  data={starshipsData}
-                  keyExtractor={(item) => item.url}
-                  renderItem={({ item }) => {
-                    return (
-                      <TouchableOpacity onPress={() => goPickedStarship(item)}>
-                        <View style={styles.relatedListItem}>
-                          <Image
-                            source={{
-                              uri: `https://starwars-visualguide.com/assets/img/starships/${item.url.match(
-                                /\d+/
-                              )}.jpg`,
-                            }}
-                            style={styles.relatedImage}
-                          />
-                          <Text style={styles.relatedName}>{item.name}</Text>
-                        </View>
-                      </TouchableOpacity>
-                    );
-                  }}
-                  ListEmptyComponent={
-                    <Text style={{ color: 'white', fontSize: 20 }}>
-                      There are no related starships
-                    </Text>
-                  }
-                  horizontal
-                />
-              </View>
-              <Text style={styles.textTitle}>Related Vehicles</Text>
-              <View style={styles.related}>
-                <FlatList
-                  data={vehiclesData}
-                  keyExtractor={(item) => item.url}
-                  renderItem={({ item }) => {
-                    return (
-                      <TouchableOpacity onPress={() => goPickedVehicle(item)}>
-                        <View style={styles.relatedListItem}>
-                          <Image
-                            source={{
-                              uri: `https://starwars-visualguide.com/assets/img/vehicles/${item.url.match(
-                                /\d+/
-                              )}.jpg`,
-                            }}
-                            style={styles.relatedImage}
-                          />
-                          <Text style={styles.relatedName}>{item.name}</Text>
-                        </View>
-                      </TouchableOpacity>
-                    );
-                  }}
-                  ListEmptyComponent={
-                    <Text style={{ color: 'white', fontSize: 20 }}>
-                      There are no related vehicles
-                    </Text>
-                  }
-                  horizontal
-                />
-              </View>
-              <Text style={styles.textTitle}>Related Species</Text>
-              <View style={styles.related}>
-                <FlatList
-                  data={speciesData}
-                  keyExtractor={(item) => item.url}
-                  renderItem={({ item }) => {
-                    return (
-                      <TouchableOpacity onPress={() => goPickedSpecie(item)}>
-                        <View style={styles.relatedListItem}>
-                          <Image
-                            source={{
-                              uri: `https://starwars-visualguide.com/assets/img/species/${item.url.match(
-                                /\d+/
-                              )}.jpg`,
-                            }}
-                            style={styles.relatedImage}
-                          />
-                          <Text style={styles.relatedName}>{item.name}</Text>
-                        </View>
-                      </TouchableOpacity>
-                    );
-                  }}
-                  ListEmptyComponent={
-                    <Text style={{ color: 'white', fontSize: 20 }}>
-                      There are no related species
-                    </Text>
-                  }
-                  horizontal
-                />
-              </View>
-            </ScrollView>
-          </SafeAreaView>
-        </View>
+            <Text style={styles.textTitle}>Related Characters</Text>
+            <View style={styles.related}>
+              <FlatList
+                data={charactersData}
+                keyExtractor={(item) => item.url}
+                renderItem={({ item }) => {
+                  return (
+                    <TouchableOpacity onPress={() => goPickedPeople(item)}>
+                      <View style={styles.relatedListItem}>
+                        <Image
+                          source={{
+                            uri: `https://starwars-visualguide.com/assets/img/characters/${item.url.match(
+                              /\d+/
+                            )}.jpg`,
+                          }}
+                          style={styles.relatedImage}
+                        />
+                        <Text style={styles.relatedName}>{item.name}</Text>
+                      </View>
+                    </TouchableOpacity>
+                  );
+                }}
+                ListEmptyComponent={
+                  <Text style={{ color: 'white', fontSize: 20 }}>
+                    There are no related characters
+                  </Text>
+                }
+                horizontal
+              />
+            </View>
+            <Text style={styles.textTitle}>Related Planets</Text>
+            <View style={styles.related}>
+              <FlatList
+                data={planetsData}
+                keyExtractor={(item) => item.url}
+                renderItem={({ item }) => {
+                  return (
+                    <TouchableOpacity onPress={() => goPickedPlanet(item)}>
+                      <View style={styles.relatedListItem}>
+                        <Image
+                          source={{
+                            uri: `https://starwars-visualguide.com/assets/img/planets/${item.url.match(
+                              /\d+/
+                            )}.jpg`,
+                          }}
+                          style={styles.relatedImage}
+                        />
+                        <Text style={styles.relatedName}>{item.name}</Text>
+                      </View>
+                    </TouchableOpacity>
+                  );
+                }}
+                ListEmptyComponent={
+                  <Text style={{ color: 'white', fontSize: 20 }}>
+                    There are no related planets
+                  </Text>
+                }
+                horizontal
+              />
+            </View>
+            <Text style={styles.textTitle}>Related Starships</Text>
+            <View style={styles.related}>
+              <FlatList
+                data={starshipsData}
+                keyExtractor={(item) => item.url}
+                renderItem={({ item }) => {
+                  return (
+                    <TouchableOpacity onPress={() => goPickedStarship(item)}>
+                      <View style={styles.relatedListItem}>
+                        <Image
+                          source={{
+                            uri: `https://starwars-visualguide.com/assets/img/starships/${item.url.match(
+                              /\d+/
+                            )}.jpg`,
+                          }}
+                          style={styles.relatedImage}
+                        />
+                        <Text style={styles.relatedName}>{item.name}</Text>
+                      </View>
+                    </TouchableOpacity>
+                  );
+                }}
+                ListEmptyComponent={
+                  <Text style={{ color: 'white', fontSize: 20 }}>
+                    There are no related starships
+                  </Text>
+                }
+                horizontal
+              />
+            </View>
+            <Text style={styles.textTitle}>Related Vehicles</Text>
+            <View style={styles.related}>
+              <FlatList
+                data={vehiclesData}
+                keyExtractor={(item) => item.url}
+                renderItem={({ item }) => {
+                  return (
+                    <TouchableOpacity onPress={() => goPickedVehicle(item)}>
+                      <View style={styles.relatedListItem}>
+                        <Image
+                          source={{
+                            uri: `https://starwars-visualguide.com/assets/img/vehicles/${item.url.match(
+                              /\d+/
+                            )}.jpg`,
+                          }}
+                          style={styles.relatedImage}
+                        />
+                        <Text style={styles.relatedName}>{item.name}</Text>
+                      </View>
+                    </TouchableOpacity>
+                  );
+                }}
+                ListEmptyComponent={
+                  <Text style={{ color: 'white', fontSize: 20 }}>
+                    There are no related vehicles
+                  </Text>
+                }
+                horizontal
+              />
+            </View>
+            <Text style={styles.textTitle}>Related Species</Text>
+            <View style={styles.related}>
+              <FlatList
+                data={speciesData}
+                keyExtractor={(item) => item.url}
+                renderItem={({ item }) => {
+                  return (
+                    <TouchableOpacity onPress={() => goPickedSpecie(item)}>
+                      <View style={styles.relatedListItem}>
+                        <Image
+                          source={{
+                            uri: `https://starwars-visualguide.com/assets/img/species/${item.url.match(
+                              /\d+/
+                            )}.jpg`,
+                          }}
+                          style={styles.relatedImage}
+                        />
+                        <Text style={styles.relatedName}>{item.name}</Text>
+                      </View>
+                    </TouchableOpacity>
+                  );
+                }}
+                ListEmptyComponent={
+                  <Text style={{ color: 'white', fontSize: 20 }}>
+                    There are no related species
+                  </Text>
+                }
+                horizontal
+              />
+            </View>
+          </ScrollView>
+        </SafeAreaView>
       </ImageBackground>
     </View>
   );
@@ -336,46 +335,40 @@ const styles = StyleSheet.create({
     width: '100%',
   },
 
-  body: {
-    paddingHorizontal: 10,
-    paddingBottom: 10,
-    alignContent: 'center',
-  },
-
   innerBody: {
     padding: 15,
   },
-
-  filmName: {
-    color: '#FFF',
-    paddingVertical: 5,
-    fontSize: 20,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
   main: {
-    flexDirection: 'row',
-    height: 250,
-    width: '100%',
-    marginBottom: 45,
-    marginTop: 40,
-    justifyContent: 'space-between',
     alignItems: 'center',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    marginVertical: 20,
+    height: 260,
+    marginTop: 40,
   },
   imagePoster: {
-    height: 250,
-    width: 175,
+    height: '100%',
+    width: 170,
     borderRadius: 15,
     borderWidth: 2,
     borderColor: 'rgba(221,185,0,.9)',
-    alignSelf: 'center',
     objectFit: 'fill',
+    flex: 1
   },
   contentFilm: {
-    alignSelf: 'center',
-    height: 250,
-    width: '41%',
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
     justifyContent: 'space-between',
+    alignItems: 'center',
+    marginLeft: 20
+  },
+  filmName: {
+    color: '#FFF',
+    paddingBottom: 5,
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   textTitle: {
     color: '#FFF',
@@ -383,21 +376,23 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
-    flexWrap: 'wrap',
+    justifyContent: 'center'
   },
   contentTextSubtitle: {
-    flex: 1,
-    backgroundColor: 'rgba(53, 53, 53, .9)',
+    backgroundColor: 'rgba(92, 92, 92, .6)',
     color: '#FFF',
     borderRadius: 15,
     padding: 15,
     borderWidth: 2,
     borderColor: 'rgba(255,255,255,.5)',
     lineHeight: 25,
-    justifyContent: 'space-around',
+    width: '100%',
+    flex: 1,
+    justifyContent: 'space-evenly'
   },
   textSubtitle: {
     color: '#FFF',
+    lineHeight: 25,
   },
 
   openingCrawl: {

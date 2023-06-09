@@ -78,51 +78,51 @@ export default function PickedVehicle({ route, navigation }) {
           <ScrollView style={{ marginTop: 20 }}>
             <Header navigation={navigation} />
             <View style={styles.main}>
-                <Image
-                  source={{
-                    uri: `https://starwars-visualguide.com/assets/img/vehicles/${contentVehicle.url.match(
-                      /\d+/
-                    )}.jpg`,
-                  }}
-                  style={styles.imagePoster}
-                />
-                <View style={styles.content}>
-                  <Text style={styles.titleText}>{contentVehicle.name}</Text>
-                  <View style={styles.subtitleTextContent}>
-                    <Text style={styles.subtitleText}>
-                      Model: {contentVehicle.model}
-                    </Text>
-                    <Text style={styles.subtitleText}>
-                      Vehicle Class: {contentVehicle.vehicle_class}
-                    </Text>
-                    <Text style={styles.subtitleText}>
-                      Manufacturer: {contentVehicle.manufacturer}
-                    </Text>
-                    <Text style={styles.subtitleText}>
-                      Cost: {contentVehicle.cost_in_credits} credits
-                    </Text>
-                    <Text style={styles.subtitleText}>
-                      Max Atmosphering Speed:{' '}
-                      {contentVehicle.max_atmosphering_speed}km/h
-                    </Text>
-                    <Text style={styles.subtitleText}>
-                      Crew: {contentVehicle.crew}
-                    </Text>
-                    <Text style={styles.subtitleText}>
-                      Passengers: {contentVehicle.passengers}
-                    </Text>
-                    <Text style={styles.subtitleText}>
-                      Cargo Capacity: {contentVehicle.cargo_capacity}kg
-                    </Text>
-                    <Text style={styles.subtitleText}>
-                      Length: {contentVehicle.length}m
-                    </Text>
-                    <Text style={styles.subtitleText}>
-                      Consumables: {contentVehicle.consumables}
-                    </Text>
-                  </View>
+              <Image
+                source={{
+                  uri: `https://starwars-visualguide.com/assets/img/vehicles/${contentVehicle.url.match(
+                    /\d+/
+                  )}.jpg`,
+                }}
+                style={styles.imagePoster}
+              />
+              <View style={styles.content}>
+                <Text style={styles.titleText}>{contentVehicle.name}</Text>
+                <View style={styles.subtitleTextContent}>
+                  <Text style={styles.subtitleText}>
+                    Model: {contentVehicle.model}
+                  </Text>
+                  <Text style={styles.subtitleText}>
+                    Vehicle Class: {contentVehicle.vehicle_class}
+                  </Text>
+                  <Text style={styles.subtitleText}>
+                    Manufacturer: {contentVehicle.manufacturer}
+                  </Text>
+                  <Text style={styles.subtitleText}>
+                    Cost: {contentVehicle.cost_in_credits} credits
+                  </Text>
+                  <Text style={styles.subtitleText}>
+                    Max Atmosphering Speed:{' '}
+                    {contentVehicle.max_atmosphering_speed}km/h
+                  </Text>
+                  <Text style={styles.subtitleText}>
+                    Crew: {contentVehicle.crew}
+                  </Text>
+                  <Text style={styles.subtitleText}>
+                    Passengers: {contentVehicle.passengers}
+                  </Text>
+                  <Text style={styles.subtitleText}>
+                    Cargo Capacity: {contentVehicle.cargo_capacity}kg
+                  </Text>
+                  <Text style={styles.subtitleText}>
+                    Length: {contentVehicle.length}m
+                  </Text>
+                  <Text style={styles.subtitleText}>
+                    Consumables: {contentVehicle.consumables}
+                  </Text>
                 </View>
               </View>
+            </View>
             <Text style={styles.titleText}>Related Pilots</Text>
             <View style={styles.related}>
               <FlatList

@@ -289,7 +289,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginLeft: 5
+    marginLeft: 20
   },
   titleText: {
     color: '#FFF',
