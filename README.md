@@ -4,7 +4,15 @@ Projeto realizado durante o 3° semestre de Análise e Desenvolvimento de Sistem
 
 ## Descrição
 
-![image info](./pictures/image.png)
+Esse projeto foi concebido a partir da ideia de desenvolver um aplicativo capaz de obter as informações presentes na API oficial de [Star Wars](https://swapi.dev), atribuindo algumas funcionalidades de navegação e intereação do usuário.
+Algumas dessas opções:
+- Busca por categoria
+- Busca por nome
+- Redirecionamento para outros objetos relacionados, por exemplo, ir para um filme ou nave espacial relacionada a determinada personagem, se existir
+
+<img src="./screens-readme/screen01.jpg" alt="Login screen" width="30%" /> <img src="./screens-readme/screen02.jpg" alt="Login screen" width="30%" /> <img src="./screens-readme/screen03.jpg" alt="Login screen" width="30%" /> <img src="./screens-readme/screen04.jpg" alt="Login screen" width="30%" /> <img src="./screens-readme/screen05.jpg" alt="Login screen" width="30%" /> <img src="./screens-readme/screen06.jpg" alt="Login screen" width="30%" />
+
+<img src="./screens-readme/screen07.jpg" alt="Login screen" width="30%"/> <img src="./screens-readme/screen08.jpg" alt="Login screen" width="30%" />
 
 ## Getting Started
 
