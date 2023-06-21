@@ -4,6 +4,8 @@ Projeto realizado durante o 3° semestre de Análise e Desenvolvimento de Sistem
 
 ## Descrição
 
+![image info](./pictures/image.png)
+
 ## Getting Started
 
 ### Visualização Online
