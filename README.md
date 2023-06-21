@@ -68,4 +68,4 @@ Com o código QR aparecendo no terminal
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT Licence](https://choosealicense.com/licenses/mit/)
