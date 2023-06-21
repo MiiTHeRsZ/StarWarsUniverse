@@ -53,8 +53,6 @@ Com o código QR aparecendo no terminal
 - Escaneie o código no terminal
 - Aproveite : )
 
-> OU, se preferir o APK, ele está nomeado como `Star Wars Universe.apk` na raiz do projeto
-
 **IOS:**
 
 - Abra a câmera do celular
