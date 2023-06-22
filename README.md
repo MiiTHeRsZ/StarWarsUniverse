@@ -23,6 +23,8 @@ O acesso pode ser feito através de um dos links abaixo, ambos são de repositó
 - [Repositório - Gustavo](https://snack.expo.dev/@miithersz/starwarsuniverse)
 - [Repositório - Leonardo](https://snack.expo.dev/@kinodesu/starwarsuniverse)
 
+Obs.: É importante que ao acessar a página, no canto direito da tela onde se encontra a visualização da execução do projeto, é recomendado que selecione a opção de emulação **Android** para uma experiência melhor.
+
 ### Instalação do projeto
 
 **Instale:**
